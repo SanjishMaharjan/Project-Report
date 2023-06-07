@@ -1,1 +1,44 @@
-
+\section{LITERATURE REVIEW}
+Generative adversarial networks (GANs) are a type of deep neural network commonly used for creating deepfakes. GANs have the advantage of being able to learn from training data and generate new data with similar features and characteristics. The architecture includes an encoder and decoder, where the encoder learns from a dataset to create fake data, and the decoder learns to differentiate between real and fake data[]. However, GANs require a substantial amount of data to generate realistic-looking faces.
+\\\\
+FakeApp is a widely used method for creating deepfakes, allowing face swapping in videos using an autoencoder-decoder structure. It can generate highly realistic fake videos that are difficult to distinguish from real ones. VGGFace, another popular deepfake technique, utilizes a generative adversarial network (GAN) and improves the architecture with additional layers for adversarial and perceptual losses. These enhancements capture facial features such as eye movements, resulting in more believable and realistic fake images.
+\\\\
+CycleGAN [23] is a deepfake technique that extracts the characteristics of one image and produces another image with the same characteristics via the GAN architecture. This method applies cycle loss function that enables them to learn the latent features. Dissimilar from FakeApp, CycleGAN is unsupervised method that can perform image-to-image conversion without using paired examples.
+\\\\
+Recurrent Neural Network [18] (RNN) for deepfake detection used the approach of using RNN for sequential processing of the frames along with ImageNet pre-trained model. Their process used the HOHO [19] dataset consisting
+of just 600 videos.
+This dataset consists small number of videos and same type of videos, which
+may not perform very well on the real time data. We will be training out model
+on large number of Realtime data.
+\\\\
+MegaFace dataset [12] was released in 2016 to evaluate
+face recognition methods with up to a million distractors
+in the gallery image set. It contains 4.7 million images of
+672, 057 identities as the training set. However, an average of
+only 7 images per identity makes it restricted in its per identity face variation. In order to study the effect of pose and age
+variations in recognising faces, the MegaFace challenge [12]
+uses the subsets of FaceScrub [15] containing 4, 000 images
+from 80 identities and FG-NET [16] containing 975 images
+from 82 identities for evaluation.
+\\\\
+The VGGFace2 dataset contains 3.31 million images from
+9131 celebrities spanning a wide range of ethnicities.The dataset is approximately
+gender-balanced, with 59.3\% males, varying between 80
+and 843 images for each identity, with 362.6 images on
+average. It includes human verified bounding boxes around
+faces, and five fiducial keypoints predicted by the model
+of [27].The VGGFace2 provides annotation to enable evaluation
+on two scenarios: face matching across different poses, and
+face matching across different ages.
+\\\\
+A convolutional neural network (CNN) is the most commonly used deep neural network model. CNN, like neural networks, has an input and output layer, as well as one or more hidden layers. In CNN [15], the hidden layers first read the inputs from the first layer and then apply a convolution mathematical operation on the input values. Here, convolution indicates a matrix multiplication or other dot product. After applying matrix multiplication, CNN uses the nonlinearity activation function such as Rectified Linear Unit (RELU) followed by additional convolutions such as pooling layers. The main goal of pooling layers is to reduce the dimensionality of the data by computing the outputs utilizing functions such as maximum pooling or average pooling.
+\\\\
+Microsoft released the large Ms-Celeb-1M dataset [7]
+in 2016 with 10 million images from 100k celebrities for training and testing. This is a very useful dataset, and we
+employ it for pre-training in this project. However,[] it has two
+limitations: (i) while it has the largest number of training
+images, the intra-identity variation is somewhat restricted
+due to an average of 81 images per person; (ii) images
+in the training set were directly retrieved from a search
+engine without manual filtering, and consequently there is
+label noise.
