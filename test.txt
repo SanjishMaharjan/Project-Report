@@ -26,7 +26,7 @@
 
     \vspace{0.5 in}
     \textbf{ A PROPOSAL OF MAJOR PROJECT}\\
-    {\fontsize{14 pt}{12} \selectfont \textbf{ITHUB}}\\
+    {\fontsize{14 pt}{12} \selectfont \textbf{DeFaceLab: Deepfake Detection Using Deep Learning}}\\
     \vspace{1.1 in}
     \textbf{ SUBMITTED BY}  \\
     ABHISHEK NEUPANE (LEC-076-BCT-02)   \\
@@ -37,7 +37,7 @@
     \textbf{ SUBMITTED TO}  \\
     DEPARTMENT OF COMPUTER ENGINERING \\
     \vspace{0.5 in}
-    \textbf{Date} \\
+    \textbf{2080-02-25} \\
 \end{center}
 \newpage
 
@@ -105,6 +105,23 @@ The system will support video uploads of varying sizes, ranging from small video
 \section{LITERATURE REVIEW}
 \newpage
 \subsection{Existing Systems}
+\subsubsection{Deepware}
+Deepware.ai is an innovative company at the forefront of deepfake detection technology. They specialize in developing advanced AI-driven solutions to combat the spread of manipulated media content. With a team of expert researchers and engineers, Deepware.ai leverages state-of-the-art machine learning algorithms and deep neural networks to accurately identify deepfakes. Their cutting-edge technology, combined with a user-friendly approach, empowers individuals and organizations to protect themselves from the potentially harmful consequences of deepfakes. Deepware.ai's commitment to continuous improvement and staying ahead of evolving deepfake techniques positions them as a trusted leader in the field, offering reliable and scalable solutions that contribute to a safer digital landscape.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width= 3in ]{deepware.png}
+    \caption{Deepware}
+\end{figure}
+\subsubsection{DuckDuckGoose}
+\justify
+DuckDuckGoose offers an open-source browser extension that keeps tabs on all websites you visit and alert you once manipulated media is detected.
+Users should also appreciate the transparency of the DeepFake detector, as DuckDuckGoose provides detailed explanations for why a video was flagged to give you some insight on what to look for in a DeepFake.
+The team behind the tool has been dedicated to sharing their research findings and encouraging participants from the community to contribute to building a more reliable model with higher accuracy.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width= 3in ]{duckduckgoose.png}
+    \caption{DuckDuckGoose}
+\end{figure}
 \newpage
 \subsection{Proposed Systems}
 \newpage
@@ -198,10 +215,14 @@ the system.
 \begin{figure}[h]
     \centering
     \includegraphics[width= 5in ]{usecasediagram.drawio.png}
-    \caption{Agile Model}
+    \caption{Use Case Diagram}
 \end{figure}
 \newpage
 \subsection{Sequence Diagram}
+\begin{figure}[h]
+    \includegraphics[width= 7 in, height= 7in ]{sequencediagram.drawio.png}
+    \caption{Sequence Diagram}
+\end{figure}
 \newpage
 \subsection{Class Diagram}
 \newpage
@@ -210,11 +231,23 @@ the system.
     \centering
     \includegraphics[width= 4in ]{level0dfd.drawio.png}
     \caption{Level 0 DFD}
-\end{figure}\begin{figure}[h]
+\end{figure}
+\justify
+DFD level – 0 indicates the basic flow of data in the system.
+\begin{itemize}
+    \item User: User input to the system is uploading video.
+    \item System: In system it shows all the details of the Video and output shows the fake video or not. \\
+          and output flow
+\end{itemize}
+Hence, the data flow diagram indicates the visualization of system with its input feed to the system by User.\\
+\begin{figure}[h]
     \centering
     \includegraphics[width= 5in ]{level1dfd.drawio.png}
     \caption{Level 1 DFD}
 \end{figure}
+\justify
+DFD Level – 1 gives more in and out information of the system.Where system gives detailed information of the procedure taking place.
+It shows the
 \newpage
 \subsection{Activity Diagram}
 \newpage
@@ -249,19 +282,15 @@ future.
 \begin{thebibliography}{99}
     \bibitem{1}Andreas Rossler, Davide Cozzolino, Luisa Verdoliva, Christian Riess, Justus
     Thies,Matthias Nießner, “FaceForensics++: Learning to Detect Manipulated Facial
-    Images” in arXiv:1901.08971.
-    \bibitem{2}Deepfake detection challenge dataset : https://www.kaggle.com/c/deepfake-detection challenge/data Accessed on 26 March, 2020
-    \bibitem{3} Yuezun Li , Xin Yang , Pu Sun , Honggang Qi and Siwei Lyu “Celeb-DF: A
-    Large-scale Challenging Dataset for DeepFake Forensics” in arXiv:1909.12962
+    Images”
+    Large-scale Challenging Dataset for DeepFake Forensics”
     \bibitem{3}10 deepfake examples that terrified and amused the internet :
-    https://www.creativebloq.com/features/deepfake-examples Accessed on 26 March,
-    2020
-    \bibitem{3}Keras: https://keras.io/ (Accessed on 26 March, 2020)
-    \bibitem{3}PyTorch : https://pytorch.org/ (Accessed on 26 March, 2020)
-    \bibitem{3}G. Antipov, M. Baccouche, and J.-L. Dugelay. Face aging with conditional generative adversarial networks. arXiv:1702.01983, Feb. 2017
-    \bibitem{3} TensorFlow: https://www.tensorflow.org/ (Accessed on 26 March, 2020)
-    \bibitem{3}Face app: https://www.faceapp.com/ (Accessed on 26 March, 2020)
-    \bibitem{3}Face Swap : https://faceswaponline.com/ (Accessed on 26 March, 2020)
+    https://www.creativebloq.com/features/deepfake-examples
+    \bibitem{3}Keras: https://keras.io/
+    \bibitem{3}PyTorch : https://pytorch.org/
+    \bibitem{3}G. Antipov, M. Baccouche, and J.-L. Dugelay. Face aging with conditional generative adversarial networks.
+    \bibitem{3}Face app: https://www.faceapp.com/
+    \bibitem{3}Face Swap : https://faceswaponline.com/
 
 \end{thebibliography}
 
