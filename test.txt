@@ -295,3 +295,34 @@ future.
 \end{thebibliography}
 
 \end{document}
+
+AI - Artificial Intelligence
+ML - Machine Learning
+DL - Deep Learning
+DNN - Deep Neural Network
+CNN - Convolutional Neural Network
+GAN - Generative Adversarial Network
+LSTM - Long Short-Term Memory
+OCR - Optical Character Recognition
+ROI - Region of Interest
+SVM - Support Vector Machine
+RF - Random Forest
+DT - Decision Tree
+NB - Naive Bayes
+AUC - Area Under the Curve
+ROC - Receiver Operating Characteristic
+PR - Precision-Recall
+AP - Average Precision
+IoU - Intersection over Union
+FPS - Frames per Second
+API - Application Programming Interface
+GUI - Graphical User Interface
+CPU - Central Processing Unit
+GPU - Graphics Processing Unit
+RAM - Random Access Memory
+SSD - Solid State Drive
+HDD - Hard Disk Drive
+OS - Operating System
+UI - User Interface
+UX - User Experience
+SDK - Software Development Kit
