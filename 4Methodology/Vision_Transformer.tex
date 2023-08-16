@@ -5,7 +5,7 @@
 
 \noindent \textbf{Patch Embedding:} The process begins by dividing the input image into non-overlapping patches. Each patch is then transformed into an embedding through a linear projection. These embeddings are further enhanced with positional encodings. Positional encodings are crucial because transformers don't inherently understand the spatial relationships between elements, and these encodings provide information about the patch's position in the image.
 \\
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/patchembedding.jpg}
     \caption{Patch Embedding}
@@ -19,7 +19,7 @@
     \item \textbf{Feedforward neural networks}: After the attention mechanism, the data passes through feedforward neural networks, which are designed to process and transform the information further. This step helps the model learn intricate features and patterns in the image data.
 \end{enumerate}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/encoderdetails.jpg}
     \caption{Transformer encoder}
@@ -27,7 +27,7 @@
 \noindent \textbf{Classification Head:} At the top of the architecture, there's a classification head. This final layer takes the transformed embeddings and uses them to predict whether an image is real or manipulated. It essentially makes the decision based on the features and patterns the model has learned throughout the previous layers.
 \\
 
-\begin{figure}[h]
+\begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/visiontransformer.png}
     \caption{Vision Transformer Architecture}

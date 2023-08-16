@@ -23,22 +23,30 @@
 
 
     \item \textbf{Video Conversion:} To include videos in our dataset, we first converted them into individual frames (images) to facilitate compatibility with the vision transformer architecture. This step involved extracting frames at a consistent frame rate from each video, resulting in a sequence of images for each video.
-          \begin{figure}[h]
+          \begin{figure}[htbp]
               \centering
               \includegraphics[width= 5in ]{img/framesExtracted.jpg}
               \caption{Video Sample}
           \end{figure}
-          \begin{figure}[h]
+          \begin{figure}[ht]
               \centering
               \includegraphics[width= 5in ]{img/frames.jpg}
               \caption{Frames Extracted from video}
           \end{figure}
     \item \textbf{Frame Selection:} To avoid redundancy and maintain dataset balance, we carefully selected frames from videos to represent various stages of manipulation, expressions, poses, and lighting conditions.
-          \begin{figure}[h]
+          \begin{figure}[htbp]
+              \centering
+              \includegraphics[width= 5in ]{img/featureshighlight.jpg}
+              \caption{Facial landmarks extraction from video}
+          \end{figure}
+
+          \begin{figure}[htbp]
               \centering
               \includegraphics[width= 5in ]{img/frameSelected.jpg}
               \caption{Frames Extracted from video}
           \end{figure}
+
+
 
     \item \textbf{Annotation and Labeling:} Each image was labeled as either "real" or "deepfake." Annotations were done manually to ensure accurate labeling for training and evaluation.
 \end{enumerate}
