@@ -1,0 +1,13 @@
+\subsubsection{Preprocessing}
+
+\noindent Before training the model, we preprocess the dataset as follows:
+
+\begin{enumerate}
+    \item \textbf{Resize:} All images, whether sourced from videos or other datasets, were resized to a consistent resolution of 112x112 pixels. This resizing ensured a uniform input size for the vision transformer.
+
+    \item \textbf{Augmentation:} To increase the dataset's diversity and improve the model's ability to generalize, we applied various data augmentation techniques. These techniques included random rotations, horizontal flips, brightness adjustments, and minor deformations.
+
+    \item \textbf{Normalization:} Pixel values of the images were normalized to a specific range to ensure consistent input for the model during training and inference.
+\end{enumerate}
+
+\noindent By preprocessing the dataset, we enhanced the model's capacity to learn relevant features and intricate patterns required for accurate deepfake detection.

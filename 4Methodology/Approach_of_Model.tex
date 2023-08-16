@@ -1,0 +1,30 @@
+\subsection{Approach for Deepfake Detection}
+
+For deepfake detection, our approach combines the power of vision transformers with advanced techniques in computer vision. Vision transformers excel in capturing both global and local features within an image, making them suitable for identifying subtle inconsistencies introduced by deepfake manipulation.
+\newpage
+Our approach involves the following steps:
+\vspace{0.2cm}
+\begin{enumerate}
+    \item \textbf{Dataset Collection}
+    \item \textbf{Preprocessing}
+    \item \textbf{Vison Transformer Architecture}
+    \item \textbf{Training}
+    \item \textbf{Evaluation}
+
+\end{enumerate}
+
+% \noindent\textbf{Dataset Collection:} We gather a diverse dataset comprising real and deepfake images. This dataset is crucial for training and evaluating our deepfake detection model.
+% \\
+
+% \noindent \textbf{Vision Transformer Architecture:} We chose the Vision Transformer (ViT) architecture due to its ability to process image patches and learn relationships between them using self-attention mechanisms. ViT has shown impressive results in various computer vision tasks, and we adapt it for deepfake detection.
+% \\
+
+% \noindent\textbf{Preprocessing:} We preprocess the dataset to extract image patches and resize them to a consistent input size. These patches retain essential information while reducing computational complexity. Additionally, we normalize pixel values to ensure consistent input for the model.
+% \\
+
+% \noindent\textbf{Training:} During training, our vision transformer learns to differentiate between real and manipulated images. We use a binary cross-entropy loss function to optimize the model's weights. The self-attention mechanism in the ViT helps the model focus on relevant patches and capture intricate patterns indicative of deepfake manipulation.
+% \\
+
+% \noindent\textbf{Evaluation:} We evaluate the model's performance using various metrics such as accuracy, precision, recall, and F1-score. These metrics provide insights into how effectively the model distinguishes between real and deepfake images.
+% \\
+% \newpage
