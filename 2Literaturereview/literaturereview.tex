@@ -1,17 +1,13 @@
 \section{LITERATURE REVIEW}
-Generative adversarial networks (GANs) are a type of deep neural network commonly used for creating deepfakes. GANs have the advantage of being able to learn from training data and generate new data with similar features and characteristics. The architecture includes an encoder and decoder, where the encoder learns from a dataset to create fake data, and the decoder learns to differentiate between real and fake data~\cite{1}. However, GANs require a substantial amount of data to generate realistic-looking faces.
-
-FakeApp is a widely used method for creating deepfakes, allowing face swapping in videos using an autoencoder-decoder structure. It can generate highly realistic fake videos that are difficult to distinguish from real ones~\cite{9}. VGGFace, another popular deepfake technique, utilizes a generative adversarial network (GAN) and improves the architecture with additional layers for adversarial and perceptual losses. These enhancements capture facial features such as eye movements, resulting in more believable and realistic fake images~\cite{vggface}.
-
-CycleGAN is a deepfake technique that extracts the characteristics of one image and produces another image with the same characteristics via the GAN architecture~\cite{cyclegan}. This method applies cycle loss function that enables them to learn the latent features. Dissimilar from FakeApp, CycleGAN is an unsupervised method that can perform image-to-image conversion without using paired examples.
-
-Recurrent Neural Network (RNN) for deepfake detection used the approach of using RNN for sequential processing of the frames along with ImageNet pre-trained model~\cite{rnn_detection}. Their process used the HOHO dataset consisting of just 600 videos. This dataset consists of a small number of videos and the same type of videos, which may not perform very well on real-time data.
-
-MegaFace dataset was released in 2016 to evaluate face recognition methods with up to a million distractors in the gallery image set~\cite{megaface}. It contains 4.7 million images of 672,057 identities as the training set.
-
-The VGGFace2 dataset contains 3.31 million images from 9131 celebrities spanning a wide range of ethnicities~\cite{vggface2}. It includes human verified bounding boxes around faces, and five fiducial keypoints predicted by the model.
-
-A Convolutional Neural Network (CNN) is the most commonly used deep neural network model~\cite{cnn_intro}. In CNN, the hidden layers first read the inputs from the first layer and then apply a convolution mathematical operation on the input values. Here, convolution indicates a matrix multiplication or other dot product. After applying matrix multiplication, CNN uses the nonlinearity activation function such as Rectified Linear Unit (RELU) followed by additional convolutions such as pooling layers.
-
-Microsoft released the large Ms-Celeb-1M dataset in 2016 with 10 million images from 100k celebrities for training and testing~\cite{ms_celeb}.
+Since 2017, the Transformer has been very renowned as a new type of neural architecture which encodes the given input data into a powerful feature, with the help of attention mechanism.  With the research article published in 2017, named "Attention Is All You Need" [6], by taking it as a framework, numerious researches has been done recently upon the visions task as well [3]. This is where the Visual Transformer comes in. 
+\\\\
+While the Transformer Architecture has been a new standard for Natural Language Processing tasks, its application to computer vision remains limited. From many recent studies and researches done, the common points mentioned was that in vision, either the attention is applied in conjuction with convolutional networks, or used to replace certain components of convolutional network while keeping their overall structure in place [4].
+\\\\
+The Transformer-liked architecture has been employed in the computer vision field in present context in three fundamental computer vision tasks, namely classification, detection and segmentation [2]. Our work lies within one of these fundamental tasks i.e the detection of artificially generated images of a human face.
+\\\\
+ The Visual Transformer has been gaining many contributions in recent years such that its capabilites has increased beyond the old traditional models. As a matter of fact, the Visual Transformer model has clear advantages over traditional models such as CNNs and RNNs in specific situations. It can process whole images in sections, which helps it understand the bigger picture. Also, it is good with working on different image sizes and tasks. 
+ Training these models on big datasets first and then adjusting it for specific tasks makes it really flexible compared to the traditional model [5]. 
+ One of its key characteristics, self-attention, not only helps us understand how the model works but also reminds us to pick the right model based on the job, data, and what we have.
+\\\\
+In summary, with all these distinct attributes and merits the Vision Transformer imposes significantly compared to others at present time, it has led us to select it as the major model for our project development.
 
