@@ -1,6 +1,13 @@
 \subsubsection{Vision Transformer Architecture}
 
 The Vision Transformer (ViT) architecture comprises the following components:
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=6in]{img/visiontransformer.png}
+    \caption{Vision Transformer Architecture}
+\end{figure}
+
 \item
 \paragraph{1. Patch Embedding:}
 The Patch Embedding step in the Vision Transformer architecture involves the following detailed process:
@@ -72,19 +79,21 @@ MSA extends SA by running $k$ self-attention operations (heads) in parallel and 
 
 \noindent b. \textbf{Feedforward neural networks:} After the attention mechanism, the data passes through feedforward neural networks, which process and transform the information further, helping the Vision Transformer model learn intricate features and patterns in the image data.
 
-Feedforward neural networks consist of multiple layers, including fully connected (dense) layers followed by non-linear activation functions. Let's denote the input to the feedforward neural network as $\mathbf{x} \in \mathbf{R}^{D_{\text{FFN}}}$, where $D_{\text{FFN}}$ is the dimension of the input features.
+\noindent Feedforward neural networks consist of multiple layers, including fully connected (dense) layers followed by non-linear activation functions. Let's denote the input to the feedforward neural network as $\mathbf{x} \in \mathbf{R}^{D_{\text{FFN}}}$, where $D_{\text{FFN}}$ is the dimension of the input features.
+\\
 
-The transformation in each layer of the feedforward neural network can be represented as follows:
+\noindent The transformation in each layer of the feedforward neural network can be represented as follows:
 
 \[
     \mathbf{h}^{(l+1)} = \text{GELU}\left(\mathbf{W}^{(l)} \mathbf{h}^{(l)} + \mathbf{b}^{(l)}\right),
 \]
 
 where $\mathbf{h}^{(l)}$ is the output of the $l$-th layer, $\mathbf{W}^{(l)}$ is the weight matrix, $\mathbf{b}^{(l)}$ is the bias vector, and $\text{GELU}(\cdot)$ is the Gaussian Error Linear Unit activation function.
+\\
 
-The feedforward neural networks in the Vision Transformer's transformer encoder process each patch embedding independently through these layers, capturing complex patterns and relationships within the data.
+\noindent The feedforward neural networks in the Vision Transformer's transformer encoder process each patch embedding independently through these layers, capturing complex patterns and relationships within the data.
 
-After the final feedforward layer, the resulting representations are concatenated and used as the output of the transformer encoder for further processing or downstream tasks, making the Vision Transformer architecture a powerful tool for image analysis and understanding.
+\noindent After the final feedforward layer, the resulting representations are concatenated and used as the output of the transformer encoder for further processing or downstream tasks, making the Vision Transformer architecture a powerful tool for image analysis and understanding.
 
 \paragraph{Activation Function: Gaussian Error Linear Unit (GELU)}
 The Gaussian Error Linear Unit (GELU) is an activation function that provides a smooth approximation to the rectifier linear unit (ReLU) activation while maintaining differentiability, which can aid in the training process.
@@ -122,21 +131,18 @@ where $X$ represents a random variable and $c$ is a constant value. This express
 
 \paragraph{3. Classification Head:}
 The Classification Head is the final component of the Vision Transformer architecture, responsible for making predictions based on the learned features and patterns from the transformer encoder. It performs classification tasks, such as determining whether an image is real or manipulated.
+\\
 
+\noindent a. \textbf{Input Preparation:} After going through the transformer layers, the image is divided into patches and transformed into a useful form for the classification head.
+\\
 
-1. \textbf{Input Preparation:} After going through the transformer layers, the image is divided into patches and transformed into a useful form for the classification head.
+\noindent b. \textbf{Pooling Operation:} Think of this as collecting information from all the patches. The model adds up the important parts from each patch and takes the average. This gives a summary of the whole image.
+\\
 
-2. \textbf{Pooling Operation:} Think of this as collecting information from all the patches. The model adds up the important parts from each patch and takes the average. This gives a summary of the whole image.
+\noindent c. \textbf{Decision Making:} The model uses this summary to decide what the image might be. For example, it could be deciding if an image is real or fake. It does this by comparing the features it has learned to what it has seen during training.
+\\
 
-3. \textbf{Decision Making:} The model uses this summary to decide what the image might be. For example, it could be deciding if an image is real or fake. It does this by comparing the features it has learned to what it has seen during training.
+\noindent d. \textbf{Class Prediction:} The model assigns a score to each possible class (like "real" or "manipulated"). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
 
-4. \textbf{Class Prediction:} The model assigns a score to each possible class (like "real" or "manipulated"). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
-
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=6in]{img/visiontransformer.png}
-    \caption{Vision Transformer Architecture}
-\end{figure}
 
 \newpage
