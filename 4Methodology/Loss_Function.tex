@@ -1,0 +1,46 @@
+\subsection{Loss function }
+The loss function employed in the Vision Transformer (ViT) model is a critical component for training the network and optimizing its performance in image classification tasks. The ViT loss function is designed to measure the disparity between the predicted class probabilities and the ground truth labels.
+
+
+\subsubsection{Cross-Entropy Loss}
+The primary loss utilized in ViT is the Cross-Entropy Loss, also known as categorical cross-entropy. This loss is well-suited for classification problems, such as image classification. It quantifies the difference between the predicted probability distribution (produced by the softmax activation) and the true distribution of class labels.
+\\
+\\
+Mathematically, the Cross-Entropy Loss for a single training example is defined as:
+\\
+
+\[
+L(y, \hat{y}) = -\sum_i y_i \cdot \log(\hat{y}_i)
+\]
+
+\text{where:}
+\begin{align*}
+y & \text{ is the ground truth label vector,} \\
+\hat{y} & \text{ is the predicted probability distribution vector,} \\
+i & \text{ iterates over all classes.}
+\end{align*}
+
+\subsection{Bilinear Interpolation }
+Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.   
+\subsubsection{Steps}
+\begin{enumerate}
+    \item \textbf{Identify Neighboring Pixels:}Given a non-integer coordinate (x, y), locate the four nearest pixels in the image: (x1, y1), (x1, y2), (x2, y1), and (x2, y2), defining a rectangular region 
+
+    \item \textbf{Calculate Interpolation Weights:} Compute the horizontal (u) and vertical (v) interpolation weights based on the fractional part of the coordinates (x, y).
+        \[
+    u = x - x1, \quad v = y - y1
+    \]
+
+    \item \textbf{Perform Interpolation:} Interpolate along the vertical direction to obtain the interpolated value:
+    \[
+    I_{\text{interpolated}} = (1 - v) \cdot I_{\text{top}} + v \cdot I_{\text{bottom}}
+    \]
+
+    \text{where:}
+    \begin{align*}
+    I_{\text{top}} & = (1 - u) \cdot I(x1, y1) + u \cdot I(x2, y1) \\
+    I_{\text{bottom}} & = (1 - u) \cdot I(x1, y2) + u \cdot I(x2, y2)
+    \end{align*}
+
+    \end{enumerate}
+
