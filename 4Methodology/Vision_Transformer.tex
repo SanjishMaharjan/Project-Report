@@ -5,7 +5,7 @@ The Vision Transformer (ViT) architecture comprises the following components:
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/visiontransformer.png}
-    \caption{Vision Transformer Architecture}
+    \caption{\textit{Vision Transformer Architecture}}
 \end{figure}
 
 \item
@@ -46,7 +46,7 @@ The resulting patch embeddings with positional information, $\mathbf{E}_\text{po
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/patchembedding.jpg}
-    \caption{Patch Embedding}
+    \caption{\textit{Patch Embedding}}
 \end{figure}
 
 \subsubsection{Transformer Encoder}
@@ -75,7 +75,7 @@ MSA extends SA by running $k$ self-attention operations (heads) in parallel and 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/encoderdetails.jpg}
-    \caption{Transformer Encoder}
+    \caption{\textit{Transformer Encoder}}
 \end{figure}
 
 \noindent \textbf{b. Feedforward neural networks:} After the attention mechanism, the data passes through feedforward neural networks, which process and transform the information further, helping the Vision Transformer model learn intricate features and patterns in the image data.
@@ -131,7 +131,7 @@ where $X$ represents a random variable and $c$ is a constant value. This express
 When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.
 \\
 \\
-Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Scaled Exponential Linear Unit (SELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. 
+Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Scaled Exponential Linear Unit (SELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns.
 
 
 
