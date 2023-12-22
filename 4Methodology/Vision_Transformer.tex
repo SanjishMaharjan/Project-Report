@@ -97,6 +97,7 @@ where $\mathbf{h}^{(l)}$ is the output of the $l$-th layer, $\mathbf{W}^{(l)}$ i
 \noindent After the final feedforward layer, the resulting representations are concatenated and used as the output of the transformer encoder for further processing or downstream tasks, making the Vision Transformer architecture a powerful tool for image analysis and understanding.
 
 \paragraph{Activation Function: Gaussian Error Linear Unit (GELU)}
+Activation functions introduce non-linearity, enabling the network to learn and approximate complex, non-linear relationships in the data.
 The Gaussian Error Linear Unit (GELU) is an activation function that provides a smooth approximation to the rectifier linear unit (ReLU) activation while maintaining differentiability, which can aid in the training process.
 
 \noindent Two formulations of the GELU function are commonly used:
@@ -126,7 +127,11 @@ The GELU activation function is often used in neural network architectures due t
     P(X = c)
 \]
 where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.
-
+\\
+When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.
+\\
+\\
+Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Scaled Exponential Linear Unit (SELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. 
 
 
 

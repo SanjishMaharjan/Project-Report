@@ -19,7 +19,8 @@ y & \text{ is the ground truth label vector,} \\
 \hat{y} & \text{ is the predicted probability distribution vector,} \\
 i & \text{ iterates over all classes.}
 \end{align*}
-
+\\
+Cross-Entropy Loss is preferred for image classification, including with Vision Transformers, due to its alignment with classification objectives, compatibility with softmax activation, and effective handling of probability distributions. Its use encourages accurate and calibrated predictions during training.
 \subsection{Bilinear Interpolation }
 Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.   
 \subsubsection{Steps}
