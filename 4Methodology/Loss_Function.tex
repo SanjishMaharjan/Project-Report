@@ -9,15 +9,16 @@ The primary loss utilized in ViT is the Cross-Entropy Loss, also known as catego
 Mathematically, the Cross-Entropy Loss for a single training example is defined as:
 \\
 
-\[
-L(y, \hat{y}) = -\sum_i y_i \cdot \log(\hat{y}_i)
-\]
+\begin{align}
+    L(y, \hat{y}) & = -\sum_i y_i \cdot \log(\hat{y}_i) \label{eq:loss_function}
+\end{align}
+
 
 \text{where:}
 \begin{align*}
-y & \text{ is the ground truth label vector,} \\
-\hat{y} & \text{ is the predicted probability distribution vector,} \\
-i & \text{ iterates over all classes.}
+    y       & \text{ is the ground truth label vector,}                 \\
+    \hat{y} & \text{ is the predicted probability distribution vector,} \\
+    i       & \text{ iterates over all classes.}
 \end{align*}
 \\
 Cross-Entropy Loss is preferred for image classification, including with Vision Transformers, due to its alignment with classification objectives, compatibility with softmax activation, and effective handling of probability distributions. Its use encourages accurate and calibrated predictions during training.

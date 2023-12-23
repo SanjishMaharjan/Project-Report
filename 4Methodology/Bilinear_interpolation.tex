@@ -1,23 +1,27 @@
 \subsection{Bilinear Interpolation }
-Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.   
+Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.
 \subsubsection{Steps}
 \begin{enumerate}
-    \item \textbf{Identify Neighboring Pixels:}Given a non-integer coordinate (x, y), locate the four nearest pixels in the image: (x1, y1), (x1, y2), (x2, y1), and (x2, y2), defining a rectangular region 
+    \item \textbf{Identify Neighboring Pixels:}Given a non-integer coordinate (x, y), locate the four nearest pixels in the image: (x1, y1), (x1, y2), (x2, y1), and (x2, y2), defining a rectangular region
 
     \item \textbf{Calculate Interpolation Weights:} Compute the horizontal (u) and vertical (v) interpolation weights based on the fractional part of the coordinates (x, y).
-        \[
-    u = x - x1, \quad v = y - y1
-    \]
+          \begin{align}
+              u & = x - x_1 \label{eq:u_equation} \\
+              v & = y - y_1 \label{eq:v_equation}
+          \end{align}
+
 
     \item \textbf{Perform Interpolation:} Interpolate along the vertical direction to obtain the interpolated value:
-    \[
-    I_{\text{interpolated}} = (1 - v) \cdot I_{\text{top}} + v \cdot I_{\text{bottom}}
-    \]
+          \begin{align}
+              I_{\text{interpolated}} & = (1 - v) \cdot I_{\text{top}} + v \cdot I_{\text{bottom}} \label{eq:interpolated_equation}
+          \end{align}
 
-    \text{where:}
-    \begin{align*}
-    I_{\text{top}} & = (1 - u) \cdot I(x1, y1) + u \cdot I(x2, y1) \\
-    I_{\text{bottom}} & = (1 - u) \cdot I(x1, y2) + u \cdot I(x2, y2)
-    \end{align*}
 
-    \end{enumerate}
+          \text{where:}
+          \begin{align}
+              I_{\text{top}}    & = (1 - u) \cdot I(x_1, y_1) + u \cdot I(x_2, y_1) \label{eq:itop_equation}    \\
+              I_{\text{bottom}} & = (1 - u) \cdot I(x_1, y_2) + u \cdot I(x_2, y_2) \label{eq:ibottom_equation}
+          \end{align}
+
+
+\end{enumerate}

@@ -27,18 +27,12 @@ Let $\mathbf{X} \in \mathbf{R}^{H \times W \times C}$ represent the original ima
 
 \noindent Mathematically, the above steps can be summarized as follows:
 
-\[
-    \mathbf{X}_\text{patches} = \text{ImagePatching}(\mathbf{X}),
-\]
-\[
-    \mathbf{X}_\text{flat} = \text{Flatten}(\mathbf{X}_\text{patches}),
-\]
-\[
-    \mathbf{E} = \mathbf{X}_\text{flat} \cdot \mathbf{W}_\text{proj},
-\]
-\[
-    \mathbf{E}_\text{pos} = \mathbf{E} + \mathbf{P}.
-\]
+\begin{align}
+    \mathbf{X}_\text{patches} & = \text{ImagePatching}(\mathbf{X}),                    \\
+    \mathbf{X}_\text{flat}    & = \text{Flatten}(\mathbf{X}_\text{patches}),           \\
+    \mathbf{E}                & = \mathbf{X}_\text{flat} \cdot \mathbf{W}_\text{proj}, \\
+    \mathbf{E}_\text{pos}     & = \mathbf{E} + \mathbf{P}.
+\end{align}
 
 The resulting patch embeddings with positional information, $\mathbf{E}_\text{pos}$, are then used as input for the subsequent stages of the Vision Transformer architecture.
 
@@ -58,20 +52,17 @@ The patch embeddings are then processed through a stack of transformer encoder l
 \\
 \noindent \textbf{Standard qkv Self-Attention (SA)}:
 For an input sequence $z \in \mathbf{R}^{N \times D}$ (with $N$ elements, each having a $D$-dimensional feature vector), we compute a weighted sum over all values $v$ in the sequence. The attention weights $A_{ij}$ are determined based on the similarity between elements of the sequence and their corresponding query $q_i$ and key $k_j$ representations.
-\[
-    [q, k, v] = zU_{qkv}, \quad U_{qkv} \in \mathbf{R}^{D \times 3Dh}
-\]
-\[
-    A = \text{softmax}\left(\frac{qk^T}{\sqrt{Dh}}\right), \quad A \in \mathbf{R}^{N \times N}
-\]
-\[
-    \text{SA}(z) = Av
-\]
+\begin{align}
+    [q, k, v]    & = zU_{qkv}, \quad U_{qkv} \in \mathbf{R}^{D \times 3Dh} \label{eq:qkv}                                               \\
+    A            & = \text{softmax}\left(\frac{qk^T}{\sqrt{Dh}}\right), \quad A \in \mathbf{R}^{N \times N} \label{eq:attentionweights} \\
+    \text{SA}(z) & = Av \label{eq:selfattention}
+\end{align}
 
 MSA extends SA by running $k$ self-attention operations (heads) in parallel and then concatenating their outputs. To ensure consistent computation and parameter complexity, the dimension $Dh$ (from Eq. 5) is usually set to $D/k$.
-\[
-    \text{MSA}(z) = [SA_1(z); SA_2(z); \ldots ; SA_k(z)], \quad U_{msa} \in \mathbf{R}^{k \cdot Dh \times D}
-\]
+\begin{align}
+    \text{MSA}(z) & = [SA_1(z); SA_2(z); \ldots ; SA_k(z)], \quad U_{msa} \in \mathbf{R}^{k \cdot Dh \times D} \label{eq:multiheadselfattention}
+\end{align}
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/encoderdetails.jpg}
@@ -85,9 +76,9 @@ MSA extends SA by running $k$ self-attention operations (heads) in parallel and 
 
 \noindent The transformation in each layer of the feedforward neural network can be represented as follows:
 
-\[
-    \mathbf{h}^{(l+1)} = \text{GELU}\left(\mathbf{W}^{(l)} \mathbf{h}^{(l)} + \mathbf{b}^{(l)}\right),
-\]
+\begin{align}
+    \mathbf{h}^{(l+1)} & = \text{GELU}\left(\mathbf{W}^{(l)} \mathbf{h}^{(l)} + \mathbf{b}^{(l)}\right) \label{eq:feedforward}
+\end{align}
 
 where $\mathbf{h}^{(l)}$ is the output of the $l$-th layer, $\mathbf{W}^{(l)}$ is the weight matrix, $\mathbf{b}^{(l)}$ is the bias vector, and $\text{GELU}(\cdot)$ is the Gaussian Error Linear Unit activation function.
 \\
@@ -102,15 +93,16 @@ The Gaussian Error Linear Unit (GELU) is an activation function that provides a 
 
 \noindent Two formulations of the GELU function are commonly used:
 
-\[
-    \text{GELU}(x) = 0.5x \left(1 + \tanh\left(\frac{\pi}{2} \cdot \left(x + 0.044715x^3\right)\right)\right)
-\]
+\begin{align}
+    \text{GELU}(x) & = 0.5x \left(1 + \tanh\left(\frac{\pi}{2} \cdot \left(x + 0.044715x^3\right)\right)\right) \label{eq:gelu}
+\end{align}
+
 
 and
 
-\[
-    \text{GELU}(x) = \frac{1}{2}x \left(1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right)
-\]
+\begin{align}
+    \text{GELU}(x) & = \frac{1}{2}x \left(1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right) \label{eq:gelu2}
+\end{align}
 
 Where:
 \begin{itemize}
@@ -123,9 +115,10 @@ Where:
 The GELU activation function is often used in neural network architectures due to its smoothness and differentiability properties, making it suitable for gradient-based optimization during training.
 
 \noindent Additionally, consider the mathematical expression:
-\[
-    P(X = c)
-\]
+\begin{align}
+    P(X = c) \label{eq:probability}
+\end{align}
+
 where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.
 \\
 When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.
@@ -139,16 +132,16 @@ Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Sca
 The Classification Head is the final component of the Vision Transformer architecture, responsible for making predictions based on the learned features and patterns from the transformer encoder. It performs classification tasks, such as determining whether an image is real or manipulated.
 \\
 
-\noindent \textbf{a. Input Preparation:} After going through the transformer layers, the image is divided into patches and transformed into a useful form for the classification head.
+\noindent \textbf{1. Input Preparation:} After going through the transformer layers, the image is divided into patches and transformed into a useful form for the classification head.
 \\
 
-\noindent \textbf{b. Pooling Operation:} Think of this as collecting information from all the patches. The model adds up the important parts from each patch and takes the average. This gives a summary of the whole image.
+\noindent \textbf{2. Pooling Operation:} Think of this as collecting information from all the patches. The model adds up the important parts from each patch and takes the average. This gives a summary of the whole image.
 \\
 
-\noindent \textbf{c. Decision Making:} The model uses this summary to decide what the image might be. For example, it could be deciding if an image is real or fake. It does this by comparing the features it has learned to what it has seen during training.
+\noindent \textbf{3. Decision Making:} The model uses this summary to decide what the image might be. For example, it could be deciding if an image is real or fake. It does this by comparing the features it has learned to what it has seen during training.
 \\
 
-\noindent \textbf{d. Class Prediction:} The model assigns a score to each possible class (like "real" or "manipulated"). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
+\noindent \textbf{4. Class Prediction:} The model assigns a score to each possible class (like "real" or "manipulated"). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
 
 
 \newpage
