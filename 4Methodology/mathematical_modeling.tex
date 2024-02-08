@@ -1,0 +1,87 @@
+\subsection{Mathematical Modeling}
+
+\subsubsection{Activation Function: Gaussian Error Linear Unit (GELU)}
+Activation functions introduce non-linearity, enabling the network to learn and approximate complex, non-linear relationships in the data. The Gaussian Error Linear Unit (GELU) is an activation function that provides a smooth approximation to the rectifier linear unit (ReLU) activation while maintaining differentiability, aiding in the training process.
+
+Two formulations of the GELU function are commonly used:
+
+\begin{equation}
+    \text{GELU}(x) = 0.5x \left(1 + \tanh\left(\frac{\pi}{2} \cdot \left(x + 0.044715x^3\right)\right)\right) \label{eq:gelu}
+\end{equation}
+
+and
+
+\begin{equation}
+    \text{GELU}(x) = \frac{1}{2}x \left(1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right) \label{eq:gelu2}
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $x$ is the input to the GELU function.
+    \item $\text{erf}(z)$ is the error function.
+    \item $\pi$ represents the mathematical constant pi.
+    \item $\sqrt{2}$ is the square root of 2.
+\end{itemize}
+
+The GELU activation function is often used in neural network architectures due to its smoothness and differentiability properties, making it suitable for gradient-based optimization during training.
+
+Additionally, consider the mathematical expression:
+\begin{equation}
+    P(X = c) \label{eq:probability}
+\end{equation}
+
+where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.\\
+
+When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.
+
+Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Scaled Exponential Linear Unit (SELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
+
+\subsubsection{Loss Function}
+The loss function employed in the Vision Transformer (ViT) model is a critical component for training the network and optimizing its performance in image classification tasks. The ViT loss function is designed to measure the disparity between the predicted class probabilities and the ground truth labels.
+
+\paragraph{Cross-Entropy Loss :}
+The primary loss utilized in ViT is the Cross-Entropy Loss, also known as categorical cross-entropy. This loss is well-suited for classification problems, such as image classification. It quantifies the difference between the predicted probability distribution (produced by the softmax activation) and the true distribution of class labels.
+
+Mathematically, the Cross-Entropy Loss for a single training example is defined as:
+
+\begin{equation}
+    L(y, \hat{y}) = -\sum_i y_i \cdot \log(\hat{y}_i) \label{eq:loss_function}
+\end{equation}
+
+where:
+\begin{align*}
+    y       & \text{ is the ground truth label vector,}                 \\
+    \hat{y} & \text{ is the predicted probability distribution vector,} \\
+    i       & \text{ iterates over all classes.}
+\end{align*}
+
+Cross-Entropy Loss is preferred for image classification, including with Vision Transformers, due to its alignment with classification objectives, compatibility with softmax activation, and effective handling of probability distributions. Its use encourages accurate and calibrated predictions during training.
+
+\subsubsection{Bilinear Interpolation }
+Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.
+\subparagraph{Steps}
+\begin{enumerate}
+    \item \textbf{Identify Neighboring Pixels:}Given a non-integer coordinate (x, y), locate the four nearest pixels in the image: (x1, y1), (x1, y2), (x2, y1), and (x2, y2), defining a rectangular region
+
+    \item \textbf{Calculate Interpolation Weights:} Compute the horizontal (u) and vertical (v) interpolation weights based on the fractional part of the coordinates (x, y).
+          \begin{align}
+              u & = x - x_1 \label{eq:u_equation} \\
+              v & = y - y_1 \label{eq:v_equation}
+          \end{align}
+
+
+    \item \textbf{Perform Interpolation:} Interpolate along the vertical direction to obtain the interpolated value:
+          \begin{align}
+              I_{\text{interpolated}} & = (1 - v) \cdot I_{\text{top}} + v \cdot I_{\text{bottom}} \label{eq:interpolated_equation}
+          \end{align}
+
+
+          \text{where:}
+          \begin{align}
+              I_{\text{top}}    & = (1 - u) \cdot I(x_1, y_1) + u \cdot I(x_2, y_1) \label{eq:itop_equation}    \\
+              I_{\text{bottom}} & = (1 - u) \cdot I(x_1, y_2) + u \cdot I(x_2, y_2) \label{eq:ibottom_equation}
+          \end{align}
+
+
+\end{enumerate}
+\newpage
