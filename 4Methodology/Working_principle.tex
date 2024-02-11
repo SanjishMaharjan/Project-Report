@@ -1,4 +1,5 @@
 \subsection{Working Description}
+
  image preprocessing paragraph.\\
 
 Before feeding an image into the model, it undergoes essential preprocessing to ensure compatibility. This includes converting the image into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the Vision Transformer (ViT) architecture. The image is divided into non-overlapping patches, each undergoing linear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.\\
@@ -72,6 +73,44 @@ In multihead attention, there are three primary inputs:\\
 
 \textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.\\
 
+The Multihead attention process is also regarded as the process where there is inter linkage between the inputs such that exchange of information takes place. To put these Q, K and V to a simple understanding, value is the component that actually is communicated in multihead attention process, query is equivalent for "what i am looking for" and key is equivalent for "what i have."\\
+
+For further explanation  on Multihead Attention, suppose we have inputs to attention blocks of N embeddings (total N+1 including CLS token) and dimension D. With the help of N and D, a stacked matrix can be obtained.
+\[ X \in \mathbb{R}^{N \times D}\] 
+
+For a single head attention we project each patch embeddings for 3 separate iteration to produce the key, queries and values. The three matrices to produce the keys, queries and values would be:
+\[ W^Q \in \mathbb{R}^{D\times d_k}\] 
+\[ W^K \in \mathbb{R}^{D \times d_k}\] 
+\[ W^V \in \mathbb{R}^{D \times d_v}\] 
+Where:
+\begin{align*}
+    d_k & : \text{the dimension of query and key .} \\
+    d_v & : \text{the dimension of values.}
+\end{align*}
+Therefore, the key(K), query(Q) and value(V) can be obtained when the original embedding matrix X is multiplied with the above mentioned matrices.
+\[Q = X.W^Q \in \mathbb{R}^{N\times d_k}\] 
+\[K = X.W^K \in \mathbb{R}^{N\times d_k}\] 
+\[V = X.W^V \in \mathbb{R}^{N\times d_v}\] \\
+
+The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel. \\
+
+The general form of  scaled dot-product attention is given as:
+\[\text{Attention}(h) = \text{softmax}\left(\frac{Q_h * K_h ^T}{\sqrt{d_k}}\right) V_h\]
+The softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities.When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.\\
+
+Finally, \[\text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o \]
+
+$W^0$ is added to ensure the right dimension is obtained.\\
+
+The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
+\begin{itemize}
+  \item $N$ is the sequence length,
+  \item $d$ is the dimensionality of the model's hidden representations,
+  \item $H$ is the number of attention heads.
+\end{itemize}
+Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.\\
+
+At present context, multihead attention doesn't require building from scratch; instead, it can be accessed through a pre-existing module.
 
 \paragraph*{This section in Raw}
 Pytorch implementation of multihead attention block.
@@ -80,6 +119,7 @@ q,k,v are obtained after linear transformation
 then image is passed through a function as 
 def forward=(self,img)\\
 q=self.q(img)
+
 
 and then attention output is obtained as self.att(q,k,v)
 
