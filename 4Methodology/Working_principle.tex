@@ -1,6 +1,6 @@
 \subsection{Working Description}
 
- image preprocessing paragraph.\\
+The comprehensive and detailed explanation of the functioning of our model is provided below:\\
 
 Before feeding an image into the model, it undergoes essential preprocessing to ensure compatibility. This includes converting the image into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the Vision Transformer (ViT) architecture. The image is divided into non-overlapping patches, each undergoing linear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.\\
 
@@ -15,7 +15,8 @@ The images undergo resizing and conversion into tensors, representing the initia
 Einops-Einstein Operation, is a Python library that was used which simplifies tensor operations. Inspired by Einstein summation conventions, it offers an expressive syntax for reshaping and reducing and manipulation of tensors. \\
 
 After completing the patching process, the original positions of the patches within an image becomes unknown. To address this, position embedding is employed. Since the attention mechanism in transformers is position-independent, position embedding is introduced to enable the model to comprehend the specific locations of each patch in the original image. A vector is assigned to each patch, representing its unique position within the image. The values within these position embedding vectors are derived from sine and cosine functions.\\
-The formula for positional encoding is as follows:\\
+
+The positional encoding can be obtained as:\\
 \\
 \[
 PE_{(pos, 2i)} = \sin\left(\frac{pos}{{10000}^{(2i/d)}}\right)
@@ -58,7 +59,7 @@ The CLS token functions as a universal feature extractor, capturing the essence 
 The Embedded Patches are then passed onto the Encoder section of the model.\\
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=2in]{img/encoderblock.png}
+    \includegraphics[width=6.3in]{img/transformer_encoder.png}
     \caption{\textit{Transformer Encoder}}
 \end{figure}\\
 
@@ -110,9 +111,54 @@ The asymptotic complexity, often denoted as Big O notation, for Multi-Head Atten
 \end{itemize}
 Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.\\
 
-At present context, multihead attention doesn't require building from scratch; instead, it can be accessed through a pre-existing module.
+At present context, multihead attention doesn't require building from scratch; instead, it can be accessed through a pre-existing module.\\
 
+After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.\\
+
+The expression for MLP is given as:\\
+
+\[\text{MLP}(x) = W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2\]
+where:
+\begin{align*}
+    x & : \text{the input vector,} \\
+    W_1 & : \text{the weight matrix for the first bilinear layer,} \\
+    b_1 & : \text{the bias vector for the first layer,} \\
+    \sigma & : \text{GeLU activation function (non-linear),} \\
+    W_2 & : \text{the weight matrix for the second bilinear layer,} \\
+    b_2 & : \text{the bias vector for the second layer.}
+\end{align*}
+Usually, an expansion factor of 4 is commonly employed as it is observed to be effective based on empirical evidence.\\
+\\
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=5in]{img/MLP workings.png}
+    \caption{\textit{Workings in MLP}}
+\end{figure}
+\newpage
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=2in]{img/residual connection.png}
+    \caption{\textit{Residual connection}}
+\end{figure}
+The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer.
+In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
+The general form can be represented as:\\
+
+For Multihead Output\\
+\[(Y) = (X)+\text{MHA (Normalization (X))}\]
+
+For MLP Output
+\[(OUTPUT) = (Y)+\text{MLP (Normalization (Y))}\] 
+where:
+\begin{align*}
+    \text{X} & : \text{Input for MHA} \\
+    \text{Y} & : \text{Output from MHA Input for MLA} \\
+\end{align*}\\
+
+Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition tasks.
 \paragraph*{This section in Raw}
+
 Pytorch implementation of multihead attention block.
 self.q=torch.nn.linear(dim,dim)\\
 q,k,v are obtained after linear transformation
