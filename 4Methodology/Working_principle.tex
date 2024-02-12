@@ -156,39 +156,5 @@ where:
     \text{Y} & : \text{Output from MHA Input for MLA} \\
 \end{align*}\\
 
-Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition tasks.
-\paragraph*{This section in Raw}
-
-Pytorch implementation of multihead attention block.
-self.q=torch.nn.linear(dim,dim)\\
-q,k,v are obtained after linear transformation
-then image is passed through a function as 
-def forward=(self,img)\\
-q=self.q(img)
-
-
-and then attention output is obtained as self.att(q,k,v)
-
-Layer Normalization: normalizes all input in a layer for each individual sample
-
-PreNorm is used for Normalization
-
-Takes the attention function and apply Normalization.\\
-\\
-
-Feed Forward  Networks (FFN):
-linear\\
-GELU\\
-Dropout\\
-linear\\
-Dropout -> used to avoid over fitting\\
-\\
-Residual (skip connection)
-Used to improve flow of info 
-Omit vanishing gradient (loss of training signals during back propagation)
-
-
-
-
-
+Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition tasks. It provides multiple benefits, such as enhanced training stability, reduction of internal covariate shifts, and improved generalization. By ensuring uniform activation distributions across various layers, it facilitates smoother optimization, leading to an overall more robust and efficient model.
 \newpage
