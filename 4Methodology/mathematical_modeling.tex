@@ -48,7 +48,7 @@ Compared to Rectified Linear Unit (ReLU) and Exponential Linear Unit (ELU), the 
 The loss function employed in the Vision Transformer (ViT) model is a critical component for training the network and optimizing its performance in image classification tasks. The ViT loss function is designed to measure the disparity between the predicted class probabilities and the ground truth labels.
 
 \paragraph{Cross-Entropy Loss :}
-The primary loss utilized in ViT is the Cross-Entropy Loss, also known as categorical cross-entropy. This loss is well-suited for classification problems, such as image classification. It quantifies the difference between the predicted probability distribution (produced by the softmax activation) and the true distribution of class labels.
+The primary loss utilized in ViT is the Cross-Entropy Loss, also known as categorical cross-entropy. It quantifies the difference between the predicted probability distribution (produced by the softmax activation) and the true distribution of class labels.
 
 Mathematically, the Cross-Entropy Loss for a single training example is defined as:
 
@@ -62,8 +62,6 @@ where:
     \hat{y} & \text{ is the predicted probability distribution vector,} \\
     i       & \text{ iterates over all classes.}
 \end{align*}
-
-Cross-Entropy Loss is preferred for image classification, including with Vision Transformers, due to its alignment with classification objectives, compatibility with softmax activation, and effective handling of probability distributions. Its use encourages accurate and calibrated predictions during training.
 
 \subsubsection{Bilinear Interpolation }
 Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.
@@ -93,7 +91,7 @@ Bilinear interpolation is a widely used technique in image processing for estima
 
 \end{enumerate}
 \subsubsection{Layer Normalization}
-In the Vision Transformer (ViT) architecture, Layer Normalization is applied independently to each position (or patch) in the input sequence.Layer Normalization is very similar to Batch normalization but layer normalization is favored because it works independently on each patch of the image sequence, aligning well with ViT's sequential processing.\\
+The Layer Normalization is applied independently to each position (or patch) in the input sequence.Layer Normalization is very similar to Batch normalization but layer normalization is favored because it works independently on each patch of the image sequence, aligning well with ViT's sequential processing.\\
 
 Given an input tensor $x$ at a particular position, the Layer Normalization is computed using the formula:
 
