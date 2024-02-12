@@ -36,7 +36,13 @@ where $X$ represents a random variable and $c$ is a constant value. This express
 
 When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.\\
 
-Compared to Rectified Linear Unit (ReLU), Exponential Linear Unit (ELU), and Scaled Exponential Linear Unit (SELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
+Compared to Rectified Linear Unit (ReLU) and Exponential Linear Unit (ELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=6in]{img/gelu vs relu.png}
+    \caption{\textit{GeLU vs ReLU vs ELU graph}}
+\end{figure}
 
 \subsubsection{Loss Function}
 The loss function employed in the Vision Transformer (ViT) model is a critical component for training the network and optimizing its performance in image classification tasks. The ViT loss function is designed to measure the disparity between the predicted class probabilities and the ground truth labels.
