@@ -2,7 +2,7 @@
 
 The comprehensive and detailed explanation of the functioning of our model is provided below:\\
 
-Before feeding an image into the model, it undergoes essential preprocessing to ensure compatibility. This includes converting the image into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the Vision Transformer (ViT) architecture. The image is divided into non-overlapping patches, each undergoing linear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.\\
+Before feeding an image into the model, it undergoes essential preprocessing to ensure compatibility. This includes converting the image into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the Vision Transformer (ViT) architecture. The image is divided into non-overlapping patches, each undergoing bilinear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.\\
 
 Initially, the input image undergoes segmentation into patches, a necessary step to conform with the sequential processing design of transformers. The formulation of these patches considers factors such as the image's height, width, color channels (red, green, and blue), and the batch size for multiple images. The input image, characterized by specific dimensions in terms of height and width, three color channels, and an optional batch dimension for multiple images, is thus transformed into a sequence to align with the architecture of transformers.\\
 \begin{figure}[htbp]
@@ -10,7 +10,7 @@ Initially, the input image undergoes segmentation into patches, a necessary step
     \includegraphics[width=4in]{img/colorbatch.png}
     \caption{\textit{Image with RGB color channels}}
 \end{figure}\\
-The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a linear transformation that ultimately yields embedding vectors. A linear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.\\
+The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a bilinear transformation that ultimately yields embedding vectors. A bilinear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.\\
 
 Einops-Einstein Operation, is a Python library that was used which simplifies tensor operations. Inspired by Einstein summation conventions, it offers an expressive syntax for reshaping and reducing and manipulation of tensors. \\
 
@@ -120,7 +120,7 @@ Because of this when processing long sequences, the computational cost of Multih
 
 At present context, multihead attention doesn't require building from scratch; instead, it can be accessed through a pre-existing module.\\
 
-After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.\\
+After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two bilinear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.\\
 
 The expression for MLP is given as:\\
 
