@@ -34,7 +34,7 @@ By preprocessing the dataset, we enhanced the model's capacity to learn relevant
 
 \subsection{Face Alignment Integration}
 
-The Face Alignment library plays a pivotal role in our DefaceLab Deepfake Detection System, contributing essential capabilities for precise face detection and feature extraction. The integration of Face Alignment enhances the accuracy of our system by ensuring optimal alignment of facial features during the analysis process.
+The Face Alignment library plays a pivotal role in our system, contributing essential capabilities for precise face detection and facial feature extraction. The integration of Face Alignment enhances the accuracy of our system by ensuring optimal alignment of facial features during the analysis process.
 
 \subsubsection{Working Principle}
 
@@ -44,17 +44,15 @@ The Face Alignment library plays a pivotal role in our DefaceLab Deepfake Detect
     \item \textbf{Face Localization:} Advanced algorithms are used to locate and identify the face within an image, determining the bounding box or region of interest containing facial features.
     
     \item \textbf{Affine Transformation:} Facial landmarks are aligned using affine transformation techniques, ensuring consistent positioning of features across different images.
+    
+    
 \end{enumerate}
 
-\subsubsection{Parameters Used}
-
-\begin{enumerate}
-    \item \textbf{Image Input:} Face Alignment takes an input image containing a face or faces as its primary parameter for analysis.
-    
-    \item \textbf{Landmark Model:} A pre-trained landmark detection model is required, defining specific facial landmarks to be identified.  Facial landmarks are specific points on the face that have distinct anatomical significance. These points include corners of the eyes, nose tip, mouth corners, and other features. Identifying these landmarks is crucial for understanding the spatial arrangement of facial components.
-    
-    \item \textbf{Face Detection Model:} The primary goal of a Face Detection Model is to locate and identify faces within an image. This is a fundamental step in deepfake detection, as it helps define the area where subsequent analysis, like feature extraction, will be applied.
-\end{enumerate}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=5in]{img/facial feature.jpg}
+    \caption{\textit{Facial Landmark Detection}}
+\end{figure}
 
 By incorporating the Face Alignment library into our project, we ensure that facial features are consistently and accurately represented, thereby enhancing the overall performance of DefaceLab in detecting manipulated or fake media.
 

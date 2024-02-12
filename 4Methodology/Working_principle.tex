@@ -101,7 +101,14 @@ The softmax is applied along the rows of the matrix to normalize them to probabi
 
 Finally, \[\text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o \]
 
-$W^0$ is added to ensure the right dimension is obtained.\\
+$W^0$ is added to ensure the right dimension is obtained.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=5in]{img/Attentionfig.png}
+    \caption{\textit{Attention head visualization}}
+\end{figure}
 
 The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
 \begin{itemize}
@@ -141,8 +148,8 @@ Usually, an expansion factor of 4 is commonly employed as it is observed to be e
     \includegraphics[width=2in]{img/residual connection.png}
     \caption{\textit{Residual connection}}
 \end{figure}
-The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer.
-In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
+The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer. In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
+
 The general form can be represented as:\\
 
 For Multihead Output\\
@@ -154,7 +161,8 @@ where:
 \begin{align*}
     \text{X} & : \text{Input for MHA} \\
     \text{Y} & : \text{Output from MHA Input for MLA} \\
-\end{align*}\\
+\end{align*}
 
 Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition tasks. It provides multiple benefits, such as enhanced training stability, reduction of internal covariate shifts, and improved generalization. By ensuring uniform activation distributions across various layers, it facilitates smoother optimization, leading to an overall more robust and efficient model.
+
 \newpage
