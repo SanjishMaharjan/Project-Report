@@ -5,27 +5,48 @@
     \renewcommand{\arraystretch}{1.5} %
     \begin{tabular}{|c|c|}
         \hline
-        \textbf{Parameter} & \textbf{Value} \\
+        \textbf{Parameters} & \textbf{Value} \\
         \hline
         \textbf{Total Datasets} & 7  \\
         \hline
         \textbf{Total images} & 446K  \\
         \hline
+        \textbf{Trained images (real and fake)} & 203K , 203K \\
+        \hline
+        \textbf{Tested images (real and fake)} & 10K , 10K \\
+        \hline
+        \textbf{Validation (real and fake)} & 10K , 10K \\
+        \hline
+        \textbf{Balanced} &  True\\
+        \hline
         \textbf{Epochs} &  a\\
         \hline
         \textbf{Batch Size} &  a\\
         \hline
-        \textbf{Balanced} &  True\\
-        \hline
         \textbf{Image Size} &  256 x 256\\
+        \hline
+        \textbf{Channels} &  3\\
         \hline
         \textbf{Patches} & 16 x 16\\
         \hline
+        \textbf{Encoder Hidden Layers} & 12\\
+        \hline
+        \textbf{Encoder Layers Dimension} & 768\\
+        \hline
+        \textbf{MLP size} & 3072\\
+        \hline
+        \textbf{ Number of Attention Heads } & 12\\
+        \hline
+        
         \textbf{Loss Function} & Cross-Entropy Loss \\
         \hline
         \textbf{Normalization} & Layer Normalization \\
         \hline
         \textbf{Activation Function} & GeLU \\
+        \hline
+        \textbf{Dropout Rate } & 0.1  \\
+        \hline
+        \textbf{Pooling Strategy } & CLS Token \\
         \hline
     \end{tabular}
     \caption{Model Parameters}
