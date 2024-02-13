@@ -1,4 +1,61 @@
 \subsection{Algorithm}
+The algorithm  for our model is as follows:
+
+\begin{enumerate}
+    \item \textbf{Libraries import:}
+          \begin{enumerate}
+             \item Importing the necessary libraries and modules, including TensorFlow, scikit-learn, and facealignment.
+          \end{enumerate}
+ 
+    \item \textbf{Load and Preprocess Data:}
+          \begin{enumerate}
+             \item Loading the video data using a video processing library.
+             \item Extracting the frames from the video.
+             \item Applying the face alignment using the \texttt{facealignment} library to ensure consistent face positions.
+             \item Resizing each frame to 256x256 using bilinear interpolation.
+          \end{enumerate}
+ 
+    \item \textbf{Split Data:}
+          \begin{enumerate}
+             \item Splitting the dataset into training, testing, and validation sets based on the required ratios (used 95-5-5 ratio).
+          \end{enumerate}
+ 
+    \item \textbf{Define Small Vision Transformer (ViT) Model:}
+          \begin{enumerate}
+             \item Creating a sequential model.
+             \item Adding an input layer with shape (256, 256, 3) for a 256x256 image with 3 channels.
+             \item Normalizing the pixel values to [0, 1].
+             \item Addition of an initial \texttt{Conv2D} layer for channel adjustment.
+             \item Implementing ViT-specific preprocessing: \texttt{Conv2D} for linear projection and \texttt{Reshape} for flattening patches.
+             \item Adding 12 transformer encoder layers, each comprising multi-head self-attention, dropout (0.2), layer normalization, feedforward neural network with \texttt{Conv1D} and dropout, and layer normalization.
+             \item Applying Global Average Pooling.
+             \item Adding an MLP Head with a \texttt{Dense} layer for binary classification (real vs. fake).
+          \end{enumerate}
+ 
+    \item \textbf{Compile the Small ViT Model:}
+          \begin{enumerate}
+             \item Using the Adam optimizer.
+             \item Setting the cross-entropy loss function.
+             \item Using accuracy as a metric for evaluation.
+          \end{enumerate}
+ 
+    \item \textbf{Train the Small ViT Model:}
+          \begin{enumerate}
+             \item Fitting the model to the training data with 10 epochs and a batch size of 32.
+             \item Monitoring model performance using the validation set.
+          \end{enumerate}
+ 
+    \item \textbf{Evaluate the Trained Model on the Test Set:}
+          \begin{enumerate}
+             \item Obtaining the test loss and accuracy by evaluating the model on the test set.
+          \end{enumerate}
+ 
+    \item \textbf{Display or Use the Evaluation Results:}
+          \begin{enumerate}
+             \item Printing or utilize the test loss and accuracy for comprehensive model evaluation.
+          \end{enumerate}
+ \end{enumerate}
  
 
-\newpage
+
+

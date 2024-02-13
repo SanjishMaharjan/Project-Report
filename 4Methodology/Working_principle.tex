@@ -119,8 +119,6 @@ The asymptotic complexity, often denoted as Big O notation, for Multi-Head Atten
 \end{itemize}
 Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.\\
 
-At present context, multihead attention doesn't require building from scratch; instead, it can be accessed through a pre-existing module.\\
-
 After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.\\
 
 The expression for MLP is given as:\\
