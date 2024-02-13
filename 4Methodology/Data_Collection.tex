@@ -6,21 +6,27 @@
 \subsubsection{Public Datasets}
 A significant part of our extensive dataset was thoughtfully put together from openly accessible collections of deepfake and authentic images. We carefully chose these datasets to make our deepfake detection model more diverse and applicable. This approach helps us ensure a strong and thorough training and testing process by making the most of these available resources.
 
-Here's the breakdown of our dataset:
-\begin{itemize}
-    \item \textbf{Trained:} 70,000 samples
-    \item \textbf{Tested:} 5,000 samples
-    \item \textbf{Validation:} 15,000 samples
-\end{itemize}
-Our dataset contains data from well-known public sources, and each of these sources has a specific role in making our deepfake detection system better :
+% Here's the breakdown of our dataset:
+% % \begin{itemize}
+% %     \item \textbf{Trained:} 70,000 samples
+% %     \item \textbf{Tested:} 5,000 samples
+% %     \item \textbf{Validation:} 15,000 samples
+% % \end{itemize}
+% Our dataset contains data from well-known public sources, and each of these sources has a specific role in making our deepfake detection system better :
 
 \begin{enumerate}
-    \item \textbf{DFDC (DeepFake Detection Challenge) Dataset:} The DFDC dataset offers an invaluable benchmark for detecting deepfake manipulations across a wide spectrum of scenarios and visual contexts. Its meticulous curation and large-scale inclusion of deepfake and real videos enable us to train our model on highly realistic and challenging instances.
-    \item \textbf{Multi-Modal-CelebA-HQ:}The Multi-Modal-CelebA-HQ stands as an extensive face image dataset featuring 30,000 high-resolution facial images curated from the CelebA dataset through the CelebA-HQ process. Each image within this dataset is accompanied by a high-quality segmentation mask, a sketch, descriptive text, and an image with a transparent background.
+\item \textbf{CelebA:} CelebA is a large-scale face attributes dataset with annotations for 40 attributes, commonly used for facial recognition and generative tasks.
 
-    \item \textbf{CelebA Dataset:} By incorporating the CelebA dataset, a prominent repository of celebrity faces in diverse poses and expressions, we bolster our model's capacity to handle variations in lighting conditions, facial orientations, and natural facial expressions – all critical aspects in detecting nuanced manipulations.
+\item \textbf{FFHQ (Flickr-Faces-HQ):} FFHQ is a high-resolution face dataset containing 70,000 images from diverse identities, frequently utilized for training high-quality face generation models.
 
-    \item \textbf{CASIA WebFace Dataset:} With the CASIA WebFace dataset, we tap into a wealth of real facial images sourced from the internet, exposing our model to a plethora of natural variations in appearance, pose, and lighting conditions. This exposure fortifies our model's ability to discern between real and manipulated facial features in an ever-evolving digital landscape.
+\item \textbf{StarGAN:} StarGAN is a dataset for image-to-image translation tasks, facilitating research in image translation, domain adaptation, and style transfer.
+
+\item \textbf{AttGAN:} AttGAN is a dataset designed for facial attribute manipulation, providing images with annotations for training models in attribute-based image editing.
+
+\item \textbf{StyleGAN:} StyleGAN is a dataset used with the StyleGAN model, capable of generating diverse and high-quality images, popular for art generation and creative applications.
+
+\item \textbf{StyleGAN2:} StyleGAN2 is an enhanced version of StyleGAN, producing higher quality and more realistic images, widely used for generative image synthesis.
+
 \end{enumerate}
 
 
