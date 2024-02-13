@@ -20,7 +20,7 @@ The algorithm  for our model is as follows:
              \item Splitting the dataset into training, testing, and validation sets based on the required ratios (used 95-5-5 ratio).
           \end{enumerate}
  
-    \item \textbf{Define Small Vision Transformer (ViT) Model:}
+    \item \textbf{Definition of Model:}
           \begin{enumerate}
              \item Creating a sequential model.
              \item Adding an input layer with shape (256, 256, 3) for a 256x256 image with 3 channels.
@@ -32,7 +32,7 @@ The algorithm  for our model is as follows:
              \item Adding an MLP Head with a \texttt{Dense} layer for binary classification (real vs. fake).
           \end{enumerate}
  
-    \item \textbf{Compile the Small ViT Model:}
+    \item \textbf{Compile the model:}
           \begin{enumerate}
              \item Using the Adam optimizer.
              \item Setting the cross-entropy loss function.
