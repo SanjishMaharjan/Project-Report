@@ -131,6 +131,40 @@ Here, \(\text{Softmax}(z)_i\) represents the \(i\)-th element of the resulting s
 
 The softmax operation essentially transforms the input vector into a probability distribution, making it suitable for tasks like multiclass classification where the goal is to assign probabilities to different classes.\\
 
+\subsubsection{Adam Optimizer}
+
+The Adam optimizer, short for Adaptive Moment Estimation, combines the advantages of adaptive learning rates, momentum optimization, and the Root Mean Square Propagation (RMSProp) algorithm. Adam is known for its efficiency, stability, and adaptability across a variety of neural network architectures and datasets.\\
+
+Adam excels in handling large datasets with varying or sparse gradients. It dynamically adjusts learning rates for each parameter, enhancing adaptability during training. By integrating momentum and RMSProp techniques, Adam accelerates convergence and prevents local minima.\\
+
+The Adam optimizer updates model parameters based on the following mathematical expressions:
+
+\begin{enumerate}
+    \item \textbf{Initialization:}
+    \[ m_0 = 0, \quad v_0 = 0 \]
+    
+    \item \textbf{Moments computation (for obtaining minimum approximation)}
+    \[ m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t \]
+    \[ v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2 \]
+    
+    \item \textbf{Bias Correction:}
+    \[ \hat{m}_t = \frac{m_t}{1 - \beta_1^t} \]
+    \[ \hat{v}_t = \frac{v_t}{1 - \beta_2^t} \]
+    
+    \item \textbf{Update Parameters:}
+    \[ \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t \]
+\end{enumerate}
+
+Where:
+\begin{itemize}
+    \item \( \eta \) is the learning rate.
+    \item \( \beta_1 \) and \( \beta_2 \) control the exponential decay rates for the moment estimates.
+    \item \( \epsilon \) is a small constant to prevent division by zero.
+\end{itemize}
+
+These equations describe the adaptive learning rate mechanism and the combination of momentum and RMSProp, for Adams Optimizer
+
+
 
 
 
