@@ -6,18 +6,19 @@
 \subsubsection{Public Datasets}
 A significant part of our extensive dataset was thoughtfully put together from openly accessible collections of deepfake and authentic images. We carefully chose these datasets to make our deepfake detection model more diverse and applicable. This approach helps us ensure a strong and thorough training and testing process by making the most of these available resources.
 
-% Here's the breakdown of our dataset:
-% % \begin{itemize}
-% %     \item \textbf{Trained:} 70,000 samples
-% %     \item \textbf{Tested:} 5,000 samples
-% %     \item \textbf{Validation:} 15,000 samples
-% % \end{itemize}
-% Our dataset contains data from well-known public sources, and each of these sources has a specific role in making our deepfake detection system better :
+Here's the breakdown of our dataset:
+\begin{itemize}
+    \item \textbf{Total:} 446,000 samples
+    \item \textbf{Trained:} 406,000 samples
+    \item \textbf{Tested:} 20,0000 samples
+    \item \textbf{Validation:} 20,000 samples
+\end{itemize}
+Our dataset contains data from well-known public sources, and each of these sources has a specific role in making our deepfake detection system better :
 
 \begin{enumerate}
 \item \textbf{CelebA:} CelebA is a large-scale face attributes dataset with annotations for 40 attributes, commonly used for facial recognition and generative tasks.
 
-\item \textbf{FFHQ (Flickr-Faces-HQ):} FFHQ is a high-resolution face dataset containing 70,000 images from diverse identities, frequently utilized for training high-quality face generation models.
+\item \textbf{FFHQ (Flickr-Faces-HQ):} FFHQ is a high-resolution face dataset containing 70,000 images from diverse identities, frequently utilized for training high-quality face generation models. We have used 50,000 images from the datasets.
 
 \item \textbf{StarGAN:} StarGAN is a dataset for image-to-image translation tasks, facilitating research in image translation, domain adaptation, and style transfer.
 
