@@ -51,7 +51,32 @@
     \caption{Model Parameters}
     \label{tab:model-parameters}
 \end{table}
+\newpage
 \subsection{Evaluation}
+\subsubsection{Loss Curve}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width= 5in, height =5in ]{img/lossVsAccuracy.png}
+    \caption{\textit{Training Vs Validation loss Curve}}
+\end{figure}
+
+\newpage
+\subsubsection{Accuracy Curve}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=5in, height =5in ]{img/accuracyVsepoch.png}
+    \caption{\textit{Training Vs Validation Accuracy Curve }}
+\end{figure}
+\newpage
+\subsubsection{Confusion Matrix}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=5in, height =5in ]{img/confusionMatrixImage.png}
+    \caption{\textit{Confusion Matrix }}
+\end{figure}
+\newpage
+\subsubsection{performance Metrices}
+
 The performance of our model is associated with various metrics such as:
 \begin{enumerate}
     \item \textbf{Accuracy:}
@@ -76,7 +101,67 @@ The performance of our model is associated with various metrics such as:
           \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
 
 \end{enumerate}
+\newpage
+\subsection{Model Inference Results }
+\begin{enumerate}
+    \item \textbf{True Positive:}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[width= 5in, height =5in ]{img/ranveer.jpg}
+              \caption{\textit{True Positive Case}}
+          \end{figure}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[height =5in  ]{img/ranveerResult.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
 
+          \newpage
+    \item \textbf{False Positive:}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[width= 5in, height =5in ]{img/blckZuke.png}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[height =5in  ]{img/blckzukeOutput.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+
+          \newpage
+
+    \item \textbf{Ture Negative}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[width= 5in, height =5in ]{img/oldman.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[height =5in ]{img/oldmanResult.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+
+          \newpage
+
+
+    \item \textbf{False Negative}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[width= 5in, height =5in ]{img/Nepali-Dashain-Tika-Pictures-Artists.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+          \begin{figure}[ht]
+              \centering
+              \includegraphics[height =5in ]{img/dashainResult.jpg}
+              \caption{\textit{Training Vs Validation loss Curve}}
+          \end{figure}
+
+
+          \newpage
+
+\end{enumerate}
 % \subsection{Work Completed}
 % \subsubsection{User Interface of Mobile application}
 % % \begin{itemize}
@@ -96,6 +181,7 @@ The performance of our model is associated with various metrics such as:
 
 % % \end{itemize}
 
+\newpage
 \subsection{UI of Project}
 We have used React Native for the development of the mobile application.
 Following are the UIs with user authentication, login page and home page where we can upload images to be classified as fake and real.\\
