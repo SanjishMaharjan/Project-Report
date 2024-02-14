@@ -52,6 +52,59 @@
     \label{tab:model-parameters}
 \end{table}
 \newpage
+\subsubsection{Performance Metrices}
+
+The performance of our model is associated with various metrics such as:
+\begin{enumerate}
+    \item \textbf{Accuracy:}
+    The accuracy metric measures how correctly the model predicts instances by calculating the ratio of correctly classified instances to the total samples.
+    \[ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
+    
+    \item \textbf{Precision:}
+    Precision assesses the model's ability to identify positive samples among the actual positives, calculated as the ratio of true positives to the sum of true positives and false positives.
+    
+    \[ Precision = \frac{TP}{TP + FP} \]
+    
+    \item \textbf{Recall (Sensitivity or True Positive Rate):}
+    Recall measures the model's ability to precisely identify positive samples from the actual positives, calculated as the ratio of true positives to the sum of true positives and false negatives.
+    
+    \[ Recall = \frac{TP}{TP + FN} \]
+    
+    
+    \item \textbf{F1 Score:}
+    
+    The F1 score, a balance between precision and recall, is advantageous in scenarios with unequal class distribution or equal emphasis on both types of errors. It ranges between 0 and 1, with peak performance at 1.
+    
+    \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
+
+    The table of performance metrices and their corresponding computed values are as follows:
+\end{enumerate}
+    
+    \begin{table}[h]
+        \centering
+        \renewcommand{\arraystretch}{1.5} %
+        \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Parameters}                     & \textbf{Value}      \\
+        \hline
+        \textbf{Accuracy}                        & 0.938                 \\
+        \hline
+        \textbf{Precision}                       & 0.9678                \\
+        \hline
+        \textbf{Recall}                        & 0.9061             \\
+        \hline
+        \textbf{F1 Score}                       & 0.93596                \\
+        \hline
+        \end{tabular}
+        \caption{Performance Metrics}
+        \label{tab:metrics}
+    \end{table}
+
+    
+
+
+    
+\newpage
 \subsection{Evaluation}
 \subsubsection{Loss Curve}
 \begin{figure}[ht]
@@ -78,39 +131,25 @@ With the increase of epoch for validation, unlike loss, there is increase in acc
     \caption{\textit{Confusion Matrix }}
 \end{figure}
 The confusion matrix is a valuable tool for evaluating our model's ability to classify images as either "real" or "fake." Simply put, it organizes results into a grid where rows represent the actual labels of images, columns depict the predicted labels, and the numbers within cells show how many images fall into each category. For instance, the top-left cell indicates that 9,699 images were correctly identified as real. The diagonal of the matrix reveals that a total of 10,000 images were accurately classified, demonstrating the model's effectiveness. However, the presence of off-diagonal elements, like the bottom-right cell showing 9,061 misclassified fake images, points to areas for improvement. While the model performs well overall, these misclassifications suggest some challenges. Through the confusion matrix, we can dive into more specific metrics like accuracy, precision, recall, and F1-score, offering detailed insights to refine the model's image classification capabilities.
-\subsubsection{Performance Metrices}
+\newpage
+\subsubsection{Receiver Operating Characteristic (ROC) curve:}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=5in, height =5in ]{img/ROC_AUC.png}
+    \caption{\textit{ROC curve }}
+\end{figure}
 
-The performance of our model is associated with various metrics such as:
-\begin{enumerate}
-    \item \textbf{Accuracy:}
-          The accuracy metric measures how correctly the model predicts instances by calculating the ratio of correctly classified instances to the total samples.
-          \[ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
-
-    \item \textbf{Precision:}
-          Precision assesses the model's ability to identify positive samples among the actual positives, calculated as the ratio of true positives to the sum of true positives and false positives.
-
-          \[ Precision = \frac{TP}{TP + FP} \]
-
-    \item \textbf{Recall (Sensitivity or True Positive Rate):}
-          Recall measures the model's ability to precisely identify positive samples from the actual positives, calculated as the ratio of true positives to the sum of true positives and false negatives.
-
-          \[ Recall = \frac{TP}{TP + FN} \]
+The ROC curve visually represents the performance of a binary classification model, such as detecting fake images. The x-axis measures the False Positive Rate (FPR), indicating how often the model incorrectly identifies real images as fake images. The y-axis measures the True Positive Rate (TPR), indicating how often the model correctly identifies fake images. A curve closer to the upper left corner signifies better performance, indicating high TPR and low FPR. The Area Under the Curve (AUC) summarizes overall performance; a value of 0.94, as seen in the image, suggests good segregation  between real and fake images.
 
 
-    \item \textbf{F1 Score:}
 
-          The F1 score, a balance between precision and recall, is advantageous in scenarios with unequal class distribution or equal emphasis on both types of errors. It ranges between 0 and 1, with peak performance at 1.
-
-          \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
-
-\end{enumerate}
 \newpage
 \subsection{Model Inference Results }
 \begin{enumerate}
     \item \textbf{True Positive:}
-         
-          \begin{figure}[ht]
-              \centering
+    
+    \begin{figure}[ht]
+        \centering
               \includegraphics[height =5in  ]{img/ranveerResult.jpg}
               \caption{\textit{Training Vs Validation loss Curve}}
           \end{figure}
@@ -172,6 +211,7 @@ The performance of our model is associated with various metrics such as:
 \subsection{UI of Project}
 We have used React Native for the development of the mobile application.
 Following are the UIs with user authentication, login page and home page where we can upload images to be classified as fake and real.\\
+
 
 \begin{figure}[ht]
     \centering
