@@ -5,80 +5,78 @@
     \renewcommand{\arraystretch}{1.5} %
     \begin{tabular}{|c|c|}
         \hline
-        \textbf{Parameters} & \textbf{Value} \\
+        \textbf{Parameters}                     & \textbf{Value}      \\
         \hline
-        \textbf{Total Datasets} &  6 \\
+        \textbf{Total Datasets}                 & 6                   \\
         \hline
-        \textbf{Total images} & 446K  \\
+        \textbf{Total images}                   & 446K                \\
         \hline
-        \textbf{Trained images (real and fake)} & 203K , 203K \\
+        \textbf{Trained images (real and fake)} & 203K , 203K         \\
         \hline
-        \textbf{Tested images (real and fake)} & 10K , 10K \\
+        \textbf{Tested images (real and fake)}  & 10K , 10K           \\
         \hline
-        \textbf{Validation (real and fake)} & 10K , 10K \\
+        \textbf{Validation (real and fake)}     & 10K , 10K           \\
         \hline
-        \textbf{Balanced} &  True\\
+        \textbf{Balanced}                       & True                \\
         \hline
-        \textbf{Epochs} &  10\\
+        \textbf{Epochs}                         & 10                  \\
         \hline
-        \textbf{Batch Size} &  32\\
+        \textbf{Batch Size}                     & 32                  \\
         \hline
-        \textbf{Image Size} &  256 x 256\\
+        \textbf{Image Size}                     & 256 x 256           \\
         \hline
-        \textbf{Channels} &  3\\
+        \textbf{Channels}                       & 3                   \\
         \hline
-        \textbf{Patches} & 16 x 16\\
+        \textbf{Patches}                        & 16 x 16             \\
         \hline
-        \textbf{Encoder Hidden Layers} & 12\\
+        \textbf{Encoder Hidden Layers}          & 12                  \\
         \hline
-        \textbf{Encoder Layers Dimension} & 768\\
+        \textbf{Encoder Layers Dimension}       & 768                 \\
         \hline
-        \textbf{MLP size} & 3072\\
+        \textbf{MLP size}                       & 3072                \\
         \hline
-        \textbf{ Number of Attention Heads } & 12\\
+        \textbf{ Number of Attention Heads }    & 12                  \\
         \hline
-        \textbf{Loss Function} & Cross-Entropy Loss \\
+        \textbf{Loss Function}                  & Cross-Entropy Loss  \\
         \hline
-        \textbf{Normalization} & Layer Normalization \\
+        \textbf{Normalization}                  & Layer Normalization \\
         \hline
-        \textbf{Optimizer} & Adam Optimizer \\
+        \textbf{Activation Function}            & GeLU                \\
         \hline
-        \textbf{Activation Function} & GeLU \\
+        \textbf{Dropout Rate }                  & 0.2                 \\
         \hline
-        \textbf{Dropout Rate } & 0.2  \\
-        \hline
-        \textbf{Pooling Strategy } & CLS Token \\
+        \textbf{Pooling Strategy }              & CLS Token           \\
         \hline
     \end{tabular}
     \caption{Model Parameters}
     \label{tab:model-parameters}
 \end{table}
 \subsection{Evaluation}
-The performance of our model is associated with various metrics such as: 
+The performance of our model is associated with various metrics such as:
 \begin{enumerate}
     \item \textbf{Accuracy:}
-           The accuracy metric measures how correctly the model predicts instances by calculating the ratio of correctly classified instances to the total samples.
-           \[ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
-    
+          The accuracy metric measures how correctly the model predicts instances by calculating the ratio of correctly classified instances to the total samples.
+          \[ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
+
     \item \textbf{Precision:}
-           Precision assesses the model's ability to identify positive samples among the actual positives, calculated as the ratio of true positives to the sum of true positives and false positives.
+          Precision assesses the model's ability to identify positive samples among the actual positives, calculated as the ratio of true positives to the sum of true positives and false positives.
 
-           \[ Precision = \frac{TP}{TP + FP} \]
-    
+          \[ Precision = \frac{TP}{TP + FP} \]
+
     \item \textbf{Recall (Sensitivity or True Positive Rate):}
-           Recall measures the model's ability to precisely identify positive samples from the actual positives, calculated as the ratio of true positives to the sum of true positives and false negatives.
+          Recall measures the model's ability to precisely identify positive samples from the actual positives, calculated as the ratio of true positives to the sum of true positives and false negatives.
 
-           \[ Recall = \frac{TP}{TP + FN} \]
-       
-    
+          \[ Recall = \frac{TP}{TP + FN} \]
+
+
     \item \textbf{F1 Score:}
-       
-           The F1 score, a balance between precision and recall, is advantageous in scenarios with unequal class distribution or equal emphasis on both types of errors. It ranges between 0 and 1, with peak performance at 1.
 
-           \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
-      
-    \end{enumerate}
-    
+          The F1 score, a balance between precision and recall, is advantageous in scenarios with unequal class distribution or equal emphasis on both types of errors. It ranges between 0 and 1, with peak performance at 1.
+
+          \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
+
+\end{enumerate}
+
 % \subsection{Work Completed}
 % \subsubsection{User Interface of Mobile application}
 % % \begin{itemize}
@@ -86,16 +84,16 @@ The performance of our model is associated with various metrics such as:
 % % \end{itemize}
 % \subsubsection{Backend}
 % % \begin{itemize}
-   
+
 % % \end{itemize}
 % \subsubsection{Machine Learning Model}
 % % \begin{itemize}
-    
+
 % % \end{itemize}
 
 % \subsection{Work Remaining}
 % % \begin{itemize}
-    
+
 % % \end{itemize}
 
 \subsection{UI of Project}
