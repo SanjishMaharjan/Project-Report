@@ -147,43 +147,50 @@ The ROC curve visually represents the performance of a binary classification mod
 \subsection{Model Inference Results }
 \begin{enumerate}
     \item \textbf{True Positive:}
+    \\
     
     \begin{figure}[ht]
         \centering
               \includegraphics[height =5in  ]{img/ranveerResult.jpg}
-              \caption{\textit{Training Vs Validation loss Curve}}
+              \caption{\textit{True Positive Result}}
           \end{figure}
+         
+          Here is a result of a true positive result. The model accurately identified and highlighted the real image, demonstrating its capability to correctly detect positive instances.
 
           \newpage
     \item \textbf{False Positive:}
-       
+       \\
           \begin{figure}[ht]
               \centering
               \includegraphics[height =5in  ]{img/blckzukeOutput.jpg}
-              \caption{\textit{Training Vs Validation loss Curve}}
+              \caption{\textit{False Positive Result}}
           \end{figure}
+    
+           The model incorrectly identified the image as real image whereas the image was a fake. This highlights a potential limitation or area for improvement in our model's performance.
 
           \newpage
 
-    \item \textbf{Ture Negative}
-      
+    \item \textbf{True Negative}
+      \\
           \begin{figure}[ht]
               \centering
               \includegraphics[height =5in ]{img/oldmanResult.jpg}
-              \caption{\textit{Training Vs Validation loss Curve}}
+              \caption{\textit{True Negative Result}}
           \end{figure}
-
+       
+          The model correctly identified and indicated the characteristics of the given input image and labelled it as fake image, demonstrating its ability to correctly detect negative instances as well.
           \newpage
 
 
     \item \textbf{False Negative}
-       
+       \\
           \begin{figure}[ht]
               \centering
               \includegraphics[height =5in ]{img/dashainResult.jpg}
-              \caption{\textit{Training Vs Validation loss Curve}}
+              \caption{\textit{False Negative Result}}
           \end{figure}
-
+          
+          This result illustrates a false negative situation. The model incorrectly categorized a genuine image as fake, potentially due to the absence of a bare face. The external features can also contribute as a factor like the presence of a 'tika' on the face, indicating a limitation in the model that requires improvement.
 
           \newpage
 
@@ -209,7 +216,7 @@ The ROC curve visually represents the performance of a binary classification mod
 
 \newpage
 \subsection{UI of Project}
-We have used React Native for the development of the mobile application.
+We have used React Native for the development of our mobile application.
 Following are the UIs with user authentication, login page and home page where we can upload images to be classified as fake and real.\\
 
 
