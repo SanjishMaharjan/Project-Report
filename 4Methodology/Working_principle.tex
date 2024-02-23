@@ -18,15 +18,11 @@ Einops-Einstein Operation, is a Python library that was used which simplifies te
 After completing the patching process, the original positions of the patches within an image becomes unknown. To address this, position embedding is employed. Since the attention mechanism in transformers is position-independent, position embedding is introduced to enable the model to comprehend the specific locations of each patch in the original image. A vector is assigned to each patch, representing its unique position within the image. The values within these position embedding vectors are derived from sine and cosine functions.\\
 
 The positional encoding can be obtained as:\\
-\\
-\[
-    PE_{(pos, 2i)} = \sin\left(\frac{pos}{{10000}^{(2i/d)}}\right)
-\]
+\begin{align}
+    PE_{(pos, 2i)}   & = \sin\left(\frac{pos}{{10000}^{(2i/d)}}\right) \label{eq:pos_encoding_sin} \\
+    PE_{(pos, 2i+1)} & = \cos\left(\frac{pos}{{10000}^{(2i/d)}}\right) \label{eq:pos_encoding_cos}
+\end{align}
 
-\[
-    PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{{10000}^{(2i/d)}}\right)
-\]
-\\
 Where:
 \begin{align*}
     \text{pos} & : \text{the position of the token in the sequence.} \\
@@ -76,11 +72,10 @@ In multihead attention, there are three primary inputs:\\
 \textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.\\
 
 The Multihead attention process is also regarded as the process where there is inter linkage between the inputs such that exchange of information takes place. To put these Q, K and V to a simple understanding, value is the component that actually is communicated in multihead attention process, query is equivalent for "what i am looking for" and key is equivalent for "what i have."\\
-
-For further explanation  on Multihead Attention, suppose we have inputs to attention blocks of N embeddings (total N+1 including CLS token) and dimension D. With the help of N and D, a stacked matrix can be obtained.
+For further explanation on Multihead Attention, suppose we have inputs to attention blocks of N embeddings (total N+1 including CLS token) and dimension D. With the help of N and D, a stacked matrix can be obtained.
 \[ X \in \mathbb{R}^{N \times D}\]
 
-For a single head attention we project each patch embeddings for 3 separate iteration to produce the key, queries and values. The three matrices to produce the keys, queries and values would be:
+For a single head attention we project each patch embeddings for 3 separate iterations to produce the key, queries, and values. The three matrices to produce the keys, queries, and values would be:
 \[ W^Q \in \mathbb{R}^{D\times d_k}\]
 \[ W^K \in \mathbb{R}^{D \times d_k}\]
 \[ W^V \in \mathbb{R}^{D \times d_v}\]
@@ -89,18 +84,25 @@ Where:
     d_k & : \text{the dimension of query and key .} \\
     d_v & : \text{the dimension of values.}
 \end{align*}
-Therefore, the key(K), query(Q) and value(V) can be obtained when the original embedding matrix X is multiplied with the above mentioned matrices.
-\[Q = X.W^Q \in \mathbb{R}^{N\times d_k}\]
-\[K = X.W^K \in \mathbb{R}^{N\times d_k}\]
-\[V = X.W^V \in \mathbb{R}^{N\times d_v}\] \\
+Therefore, the key(K), query(Q), and value(V) can be obtained when the original embedding matrix X is multiplied with the above-mentioned matrices.
+\begin{align}
+    Q & = X.W^Q \in \mathbb{R}^{N\times d_k} \\
+    K & = X.W^K \in \mathbb{R}^{N\times d_k} \\
+    V & = X.W^V \in \mathbb{R}^{N\times d_v}
+\end{align}
 
-The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel. \\
+The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
 
-The general form of  scaled dot-product attention is given as:
-\[\text{Attention}(h) = \text{softmax}\left(\frac{Q_h * K_h ^T}{\sqrt{d_k}}\right) V_h\]
-The softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities.When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.\\
+The general form of the scaled dot-product attention is given as:
+\begin{equation}
+    \text{Attention}(h) = \text{softmax}\left(\frac{Q_h \cdot K_h ^T}{\sqrt{d_k}}\right) V_h
+\end{equation}
+The softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
 
-Finally, \[\text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o \]
+Finally,
+\begin{equation}
+    \text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o
+\end{equation}
 
 $W^0$ is added to ensure the right dimension is obtained.
 
@@ -123,13 +125,16 @@ After the MultiHead Attention layer, an essential component is the Multi-Layer P
 
 The expression for MLP is given as:\\
 
-\[\text{MLP}(x) = W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2\]
+\begin{equation}
+    \text{MLP}(x) = W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2 \label{eq:mlp}
+\end{equation}
+
 where:
 \begin{align*}
-    x      & : \text{the input vector,}                                \\
+    x      & : \text{the input vector,}                              \\
     W_1    & : \text{the weight matrix for the first linear layer,}  \\
-    b_1    & : \text{the bias vector for the first layer,}             \\
-    \sigma & : \text{GeLU activation function (non-linear),}           \\
+    b_1    & : \text{the bias vector for the first layer,}           \\
+    \sigma & : \text{GeLU activation function (non-linear),}         \\
     W_2    & : \text{the weight matrix for the second linear layer,} \\
     b_2    & : \text{the bias vector for the second layer.}
 \end{align*}
@@ -152,10 +157,16 @@ The Residual connection, also known as Skip connection, addresses the vanishing 
 The general form can be represented as:\\
 
 For Multihead Output\\
-\[(Y) = (X)+\text{MHA (Normalization (X))}\]
+\begin{equation}
+    (Y) = (X) + \text{MHA} (\text{Normalization} (X)) \label{eq:multihead_output}
+\end{equation}
+
 
 For MLP Output
-\[(OUTPUT) = (Y)+\text{MLP (Normalization (Y))}\]
+\begin{equation}
+    (\text{OUTPUT}) = (Y) + \text{MLP} (\text{Normalization} (Y)) \label{eq:mlp_output}
+\end{equation}
+
 where:
 \begin{align*}
     \text{X} & : \text{Input for MHA}                 \\

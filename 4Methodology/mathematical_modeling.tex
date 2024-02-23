@@ -95,9 +95,10 @@ The Layer Normalization is applied independently to each position (or patch) in 
 
 Given an input tensor $x$ at a particular position, the Layer Normalization is computed using the formula:
 
-\[
-\text{LayerNorm}(x) = \frac{x - \text{mean}(x)}{\sqrt{\text{var}(x) + \epsilon}} \cdot \gamma + \beta
-\]\\
+\begin{equation}
+    \text{LayerNorm}(x) = \frac{x - \text{mean}(x)}{\sqrt{\text{var}(x) + \epsilon}} \cdot \gamma + \beta \label{eq:layer_norm}
+\end{equation}
+
 
 Here, $\text{mean}(x)$ and $\text{var}(x)$ represent the mean and variance of the input $x$ at that position, and $\gamma$ and $\beta$ are learnable parameters. $\epsilon$ is a small constant for numerical stability.\\
 
@@ -109,12 +110,14 @@ Positional encoding is used Vision Transformer to provide information about the 
 
 Formula for 1D positional encoding for a token at position $pos$ in a sequence of length $L$ with embedding dimension $d$:\\
 
-\[
-\text{PE}(pos, 2i) = \sin\left(\frac{pos}{10000^{2i/d}}\right)
-\]
-\[
-\text{PE}(pos, 2i+1) = \cos\left(\frac{pos}{10000^{2i/d}}\right)
-\]\\
+\begin{equation}
+    \text{PE}(pos, 2i) = \sin\left(\frac{pos}{10000^{2i/d}}\right) \label{eq:pos_encoding_sin}
+\end{equation}
+
+\begin{equation}
+    \text{PE}(pos, 2i+1) = \cos\left(\frac{pos}{10000^{2i/d}}\right) \label{eq:pos_encoding_cos}
+\end{equation}
+
 
 Here, $pos$ is the position, $i$ is the dimension, and $d$ is the embedding dimension. The positional encoding values are added to the original embeddings of the tokens.\\
 
@@ -125,7 +128,10 @@ The softmax function is used to convert a vector of real numbers into a probabil
 
 Given an input vector \(z\) with \(K\) elements, the softmax function is calculated as follows:\\
 
-\[ \text{Softmax}(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \]\\
+\begin{equation}
+    \text{Softmax}(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \label{eq:softmax}
+\end{equation}
+
 
 Here, \(\text{Softmax}(z)_i\) represents the \(i\)-th element of the resulting softmax vector. \(e\) is the base of the natural logarithm (Euler's number). The numerator is the exponentiation of the \(i\)-th element of \(z\), and the denominator is the sum of the exponentiations of all elements in \(z\).\\
 
@@ -141,18 +147,26 @@ The Adam optimizer updates model parameters based on the following mathematical 
 
 \begin{enumerate}
     \item \textbf{Initialization:}
-    \[ m_0 = 0, \quad v_0 = 0 \]
-    
+          \begin{equation}
+              m_0 = 0, \quad v_0 = 0
+          \end{equation}
+
     \item \textbf{Moments computation (for obtaining minimum approximation)}
-    \[ m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t \]
-    \[ v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2 \]
-    
+          \begin{align}
+              m_t & = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t   \\
+              v_t & = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2
+          \end{align}
+
     \item \textbf{Bias Correction:}
-    \[ \hat{m}_t = \frac{m_t}{1 - \beta_1^t} \]
-    \[ \hat{v}_t = \frac{v_t}{1 - \beta_2^t} \]
-    
+          \begin{align}
+              \hat{m}_t & = \frac{m_t}{1 - \beta_1^t} \\
+              \hat{v}_t & = \frac{v_t}{1 - \beta_2^t}
+          \end{align}
+
     \item \textbf{Update Parameters:}
-    \[ \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t \]
+          \begin{equation}
+              \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \cdot \hat{m}_t
+          \end{equation}
 \end{enumerate}
 
 Where:
