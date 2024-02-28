@@ -27,7 +27,7 @@ The algorithm  for our model is as follows:
              \item Normalizing the pixel values to [0, 1].
              \item Addition of an initial \texttt{Conv2D} layer for channel adjustment.
              \item Implementing ViT-specific preprocessing: \texttt{Conv2D} for linear projection and \texttt{Reshape} for flattening patches.
-             \item Adding 12 transformer encoder layers, each comprising multi-head self-attention, dropout (0.2), layer normalization, feedforward neural network with \texttt{Conv1D} and dropout, and layer normalization.
+             \item Adding 12 transformer encoder layers, each comprising multi-head self-attention, dropout (0.2), layer normalization, feedforward neural network with \texttt{Conv2D} and dropout, and layer normalization.
              \item Applying Global Average Pooling.
              \item Adding an MLP Head with a \texttt{Dense} layer for binary classification (real vs. fake).
           \end{enumerate}
