@@ -140,7 +140,46 @@ The confusion matrix is a valuable tool for evaluating our model's ability to cl
 \end{figure}
 
 The ROC curve visually represents the performance of a binary classification model, such as detecting fake images. The x-axis measures the False Positive Rate (FPR), indicating how often the model incorrectly identifies real images as fake images. The y-axis measures the True Positive Rate (TPR), indicating how often the model correctly identifies fake images. A curve closer to the upper left corner signifies better performance, indicating high TPR and low FPR. The Area Under the Curve (AUC) summarizes overall performance; a value of 0.94, as seen in the image, suggests good segregation  between real and fake images.
+\newpage
+\subsection{K-Fold Cross-Validation}
 
+K-fold cross-validation is a technique used to assess the performance and generalization ability of a machine learning model. It involves splitting the dataset into \(k\) equally sized parts (or folds). The model is trained \(k\) times, each time using \(k-1\) folds as the training data and the remaining fold as the validation data.\\
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Fold} & \textbf{Validation Accuracy} \\
+        \hline
+        1 & 0.9375 \\
+        \hline
+        2 & 0.93 \\
+        \hline
+        3 & 0.927 \\
+        \hline
+        4 & 0.934 \\
+        \hline
+        5 & 0.91 \\
+        \hline
+        6 & 0.926 \\
+        \hline
+        7 & 0.9255 \\
+        \hline
+        8 & 0.94 \\
+        \hline
+        9 & 0.9295 \\
+        \hline
+        10 & 0.939 \\
+        \hline
+    \end{tabular}
+    \caption{Validation Accuracy Results for Each Fold}
+    \label{tab:kfold_results}
+\end{table}
+
+The average validation accuracy across all folds is approximately \(92.85\%\). The model's performance ranges from a minimum accuracy of \(91\%\) to a maximum of \(94\%\), indicating consistency in the model's predictive power. The standard deviation of \(0.00835\) is a measure of how much the accuracies deviate from the average, providing insights into the stability and reliability of the model across different folds. This suggests that the deepfake detection model using ViTs has achieved a consistently high level of accuracy across multiple folds.\\
+
+The trends or patterns observed in the validation accuracies can help in understanding how well our integrated model generalizes to unseen data and its overall performance.
 
 
 \newpage

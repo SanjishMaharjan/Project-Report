@@ -1,6 +1,35 @@
 
-\section{FEASIBILITY STUDY}
-\subsection{Economic feasibility}
+\section{REQUIREMENTS AND FEASIBILITY }
+
+\subsection{Functional Requirement}
+The functional requirements of the system are:
+\begin{enumerate}
+    \item Authentication of users.
+    \item User-friendly interface for uploading and detection.
+    \item Image preprocessing.
+    \item Mathematical Modeling and Implication. 
+    \item Model Development and training.
+    \item Testing and Validation.
+
+\end{enumerate}
+
+\subsection{Non Functional Requirement}
+\justify
+These requirements are not needed by the system but are essential for the better
+performance of software. The points below focus on the non-functional requirement of
+the system.
+\begin{itemize}
+    \item Reliability
+    \item   Usability
+    \item   Security
+    \item   Portability
+    \item   Speed and responsiveness
+    \item  Performance
+\end{itemize}
+\newpage
+\subsection{Feasibility Study}
+
+\subsubsection{Economic feasibility}
 This is a low-budget project with no development costs. The total expenditure of the
 project is just computational power. The dataset and computational power required for
 the project ware readily available. The computational power was provided by google
@@ -8,8 +37,69 @@ collab. So, the project was economically feasible. The system will be simple to
 comprehend and use. As a result, there will be no need of trained personnel to use the
 system. This system have the capacity to expand by adding more components.
 
-\subsection{Operational feasibility}
+\subsubsection{Operational feasibility}
 The project is operationally feasible, as from  completion of the project, the operation can be carried put for the intended purpose.
 
-\subsection{Technical feasibility}
+\subsubsection{Technical feasibility}
 Our project's technical feasibility is assured by user-friendly tools like React Native, Keras and Google Colab. Keras simplified the implementation of our model, while Google Colab provides a collaborative and accessible environment for efficient development and training. 
+\newpage
+\subsection{System Development Tools}
+Our Deepfake detection System requires and incorporates the tools which are listed below:
+\begin{enumerate}
+        \item Python Modules:
+        \begin{itemize}
+            \item NumPy:
+                \begin{itemize}
+                    \item Used for numerical operations and handling multi-dimensional arrays efficiently.
+                    \item Employed in the data preprocessing phase for manipulation and transformation of image data.
+                \end{itemize}
+            \item Keras:
+                \begin{itemize}
+                    \item A high-level deep learning API that simplifies the process of building and training neural networks.
+                    \item Applied for building and training the deep fake detection model.
+                \end{itemize}
+            \item Matplotlib:
+                \begin{itemize}
+                    \item Used for data visualization, helpful for understanding model performance and debugging.
+                    \item Applied for plotting graphs and visualizing images during the analysis phase.
+                \end{itemize}
+        \end{itemize}
+        
+        \item Google Colab:
+            \begin{itemize}
+                \item Provides a free cloud-based Jupyter notebook environment with GPU support, suitable for training deep learning models.
+                \item Used for developing, training, and experimenting with the deep fake detection model.
+            \end{itemize}
+        
+        \item OpenCV:
+            \begin{itemize}
+                \item An open-source computer vision library that aids in image and video processing.
+                \item Utilized for tasks like image loading, preprocessing, and post-processing during both training and inference phases.
+            \end{itemize}
+        
+        \item React Native:
+            \begin{itemize}
+                \item A framework for building mobile applications using JavaScript and React.
+                \item Used for developing the mobile application interface for users to interact with the deep fake detection system.
+            \end{itemize}
+        
+        \item Expo Library:
+            \begin{itemize}
+                \item A set of tools and services for building React Native applications more efficiently.
+                \item Enhances the development process and simplifies the deployment of the React Native application.
+            \end{itemize}
+        
+        \item Git/GitHub:
+            \begin{itemize}
+                \item Version control system for tracking changes in the codebase, collaborating with team members, and managing project versions.
+                \item Used throughout the project for maintaining code integrity and facilitating collaboration.
+            \end{itemize}
+        
+        \item FastAPI:
+            \begin{itemize}
+                \item A modern, fast web framework for building APIs with Python 3.7+ based on standard Python type hints.
+                \item Used for developing the backend API that connects the React Native application with the deep fake detection model.
+            \end{itemize}
+    
+\end{enumerate}
+\newpage
