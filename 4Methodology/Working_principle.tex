@@ -9,7 +9,7 @@ Initially, the input image undergoes segmentation into patches, a necessary step
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=4in]{img/colorbatch.png}
-    \caption{\textit{Image with RGB color channels}}
+    \caption{{Image with RGB color channels}}
 \end{figure}\\
 The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a linear transformation that ultimately yields embedding vectors. A linear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.\\
 
@@ -33,13 +33,13 @@ Where:
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=4in]{img/plot for sine and cosine wave.png}
-    \caption{\textit{Value vs Position graph for sine and cosine wave}}
+    \caption{{Value vs Position graph for sine and cosine wave}}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=4in]{img/pos 10.png}
-    \caption{\textit{Graph for sine and cosine wave  at position 10}}
+    \caption{{Graph for sine and cosine wave  at position 10}}
 \end{figure}
 From the graph below, for a patch at position 10, the values in its associated position embedding vectors is equivalent to to corresponding values intersecting within the curve as shown in the graph.\\
 \newpage
@@ -48,7 +48,7 @@ In the process of adding position embeddings to an image, we introduced a specia
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=5in]{img/CLS token.png}
-    \caption{\textit{CLS Token and position embedding vectors}}
+    \caption{{CLS Token and position embedding vectors}}
 \end{figure}
 
 The CLS token functions as a universal feature extractor, capturing the essence of the entire image. This extracted information can then be utilized for various tasks downstream. The learning positional embeddings helps reduce inductive biases. These embeddings are added on top of input embedding vectors and are not concatenated with them.\\
@@ -57,7 +57,7 @@ The Embedded Patches are then passed onto the Encoder section of the model.\\
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6.3in]{img/transformer_encoder.png}
-    \caption{\textit{Transformer Encoder}}
+    \caption{{Transformer Encoder}}
 \end{figure}\\
 
 Multihead attention is a mechanism designed to capture different aspects or relationships within input sequences. It involves splitting the input into multiple heads or sets, each with its own set of learned weights. The attention mechanism is then applied independently to each head in parallel.
@@ -110,7 +110,7 @@ $W^0$ is added to ensure the right dimension is obtained.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=5in]{img/Attentionfig.png}
-    \caption{\textit{Attention head visualization}}
+    \caption{{Attention head visualization}}
 \end{figure}
 
 The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
@@ -144,13 +144,13 @@ Usually, an expansion factor of 4 is commonly employed as it is observed to be e
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=5.5in]{img/MLP workings.png}
-    \caption{\textit{Workings in MLP}}
+    \caption{{Workings in MLP}}
 \end{figure}
 \newpage
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=2in]{img/residual connection.png}
-    \caption{\textit{Residual connection}}
+    \caption{{Residual connection}}
 \end{figure}
 The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer. In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
 
