@@ -8,8 +8,17 @@
 \usepackage{subcaption}
 \usepackage{caption}
 \captionsetup{font=it}
+\usepackage{titlesec}
+\usepackage{setspace}
 
+% Redefine sectioning commands to change font size
+\titleformat{\section}{\normalfont\fontsize{14}{16}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{14}{16}\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{14}{16}\bfseries}{\thesubsubsection}{1em}{}
+\onehalfspacing
 \begin{document}
+
+
 \include{0ACover/1title}
 \include{0ACover/0cover}
 \newpage
