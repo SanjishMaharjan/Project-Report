@@ -27,9 +27,7 @@
 \setstretch{1.5}
 
 \begin{document}
-% \renewcommand{\cftfigpresnum}{\begin{lrbox}{\@tempboxa}}
-%     \renewcommand{\cftfigaftersnum}{\end{lrbox}}
-% \renewcommand{\numberline}[1]{}
+
 \cftsetindents{figure}{0em}{3em}
 \cftsetindents{table}{0em}{3em}
 \include{0ACover/1title}
@@ -68,10 +66,10 @@
 \include{0IAbbreviations/abbreviations}
 % \thispagestyle{empty}
 
-\include{1Introduction/introduction}
+\input{1Introduction/introduction}
 
 
-\include{1Introduction/background}
+\input{1Introduction/background}
 
 \input{1Introduction/Motivation}
 
