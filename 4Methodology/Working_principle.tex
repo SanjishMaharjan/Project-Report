@@ -140,18 +140,6 @@ where:
 \end{align*}
 Usually, an expansion factor of 4 is commonly employed as it is observed to be effective based on empirical evidence.\\
 \\
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=5.5in]{img/MLP workings.png}
-    \caption{{Workings in MLP}}
-\end{figure}
-\newpage
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=2in]{img/residual connection.png}
-    \caption{{Residual connection}}
-\end{figure}
 The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer. In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
 
 The general form can be represented as:\\
@@ -172,7 +160,17 @@ where:
     \text{X} & : \text{Input for MHA}                 \\
     \text{Y} & : \text{Output from MHA Input for MLP} \\
 \end{align*}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=2in]{img/residual connection.png}
+    \caption{{Residual connection}}
+\end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=5.5in]{img/MLP workings.png}
+    \caption{{Workings in MLP}}
+\end{figure}
 
-Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition tasks. It provides multiple benefits, such as enhanced training stability, reduction of internal covariate shifts, and improved generalization. By ensuring uniform activation distributions across various layers, it facilitates smoother optimization, leading to an overall more robust and efficient model.
+Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition.
 
 \newpage
