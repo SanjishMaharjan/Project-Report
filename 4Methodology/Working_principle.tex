@@ -42,7 +42,6 @@ Where:
     \caption{{Graph for sine and cosine wave  at position 10}}
 \end{figure}
 From the graph below, for a patch at position 10, the values in its associated position embedding vectors is equivalent to to corresponding values intersecting within the curve as shown in the graph.\\
-\newpage
 In the process of adding position embeddings to an image, we introduced a special vector known as the CLS token, where CLS stands for Classification Token. The CLS token is a unique vector assigned to each input image. Initially, it receives random values and is considered a placeholder. However, as the model learns, these values are adjusted based on the information gathered from all other input patches. This adjustment process makes the CLS token a "learnable vector," as it evolves during training to contribute valuable information for the classification task.\\
 
 \begin{figure}[htbp]
@@ -51,7 +50,7 @@ In the process of adding position embeddings to an image, we introduced a specia
     \caption{{CLS Token and position embedding vectors}}
 \end{figure}
 
-The CLS token functions as a universal feature extractor, capturing the essence of the entire image. This extracted information can then be utilized for various tasks downstream. The learning positional embeddings helps reduce inductive biases. These embeddings are added on top of input embedding vectors and are not concatenated with them.\\
+\noindent The CLS token functions as a universal feature extractor, capturing the essence of the entire image. This extracted information can then be utilized for various tasks downstream. The learning positional embeddings helps reduce inductive biases. These embeddings are added on top of input embedding vectors and are not concatenated with them.\\
 \\
 The Embedded Patches are then passed onto the Encoder section of the model.\\
 \begin{figure}[htbp]
@@ -60,10 +59,10 @@ The Embedded Patches are then passed onto the Encoder section of the model.\\
     \caption{{Transformer Encoder}}
 \end{figure}
 
-Multihead attention is a mechanism designed to capture different aspects or relationships within input sequences. It involves splitting the input into multiple heads or sets, each with its own set of learned weights. The attention mechanism is then applied independently to each head in parallel.
+\noindent Multihead attention is a mechanism designed to capture different aspects or relationships within input sequences. It involves splitting the input into multiple heads or sets, each with its own set of learned weights. The attention mechanism is then applied independently to each head in parallel.
 The multihead attention is the scaled dot product attention mechanism of the transformer and allows to share info between different inputs.\\
 
-In multihead attention, there are three primary inputs:\\
+\noindent In multihead attention, there are three primary inputs:\\
 
 \textbf{Query (Q):} This represents the set of queries used to retrieve information from the input sequence. It is usually derived from the input data and is transformed to capture relevant features.\\
 

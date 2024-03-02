@@ -11,12 +11,21 @@
 \usepackage{titlesec}
 \usepackage{tocloft}
 \usepackage{setspace}
+\usepackage{titletoc}
+
+% Set font size for titles in Table of Contents, List of Figures, and List of Tables
+\renewcommand{\contentsname}{\normalfont\fontsize{14}{16}\bfseries Table of Contents}
+\renewcommand{\listfigurename}{\normalfont\fontsize{14}{16}\bfseries List of Figures}
+\renewcommand{\listtablename}{\normalfont\fontsize{14}{16}\bfseries List of Tables}
+
 
 % Redefine sectioning commands to change font size
 \titleformat{\section}{\normalfont\fontsize{14}{16}\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\fontsize{12}{16}\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalfont\fontsize{12}{16}\bfseries}{\thesubsubsection}{1em}{}
 \onehalfspacing
+\setstretch{1.5}
+
 \begin{document}
 % \renewcommand{\cftfigpresnum}{\begin{lrbox}{\@tempboxa}}
 %     \renewcommand{\cftfigaftersnum}{\end{lrbox}}
