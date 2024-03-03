@@ -62,11 +62,11 @@ The comprehensive and detailed explanation of the functioning of our model is pr
 
 \noindent In multihead attention, there are three primary inputs:
 
-\textbf{Query (Q):} This represents the set of queries used to retrieve information from the input sequence. It is usually derived from the input data and is transformed to capture relevant features.
+\noindent \textbf{Query (Q):} This represents the set of queries used to retrieve information from the input sequence. It is usually derived from the input data and is transformed to capture relevant features.
 
-\textbf{Key (K):} The key input consists of keys associated with each element in the input sequence. Like the query, it is derived from the input data and aims to provide information about the relationships between different elements.
+\noindent \textbf{Key (K):} The key input consists of keys associated with each element in the input sequence. Like the query, it is derived from the input data and aims to provide information about the relationships between different elements.
 
-\textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.
+\noindent \textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.
 
 \noindent The Multihead attention process is also regarded as the process where there is inter linkage between the inputs such that exchange of information takes place. To put these Q, K and V to a simple understanding, value is the component that actually is communicated in multihead attention process, query is equivalent for "what i am looking for" and key is equivalent for "what i have."
 
@@ -117,7 +117,8 @@ T
     \caption{{Attention head visualization}}
 \end{figure}
 
-\noindent The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
+\noindent The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\]
+\noindent where:
 \begin{itemize}
     \item $N$ is the sequence length,
     \item $d$ is the dimensionality of the model's hidden representations,
