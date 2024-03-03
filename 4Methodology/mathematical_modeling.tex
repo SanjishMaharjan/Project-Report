@@ -1,9 +1,9 @@
 \subsection{Mathematical Modeling}
 
 \subsubsection{Activation Function: Gaussian Error Linear Unit (GELU)}
-Activation functions play a crucial role in introducing non-linearity to the feedforward neural network layers. Following the self-attention mechanism's processing of input data, the results traverse through the feedforward neural network. This network involves linear transformations, and activation functions, such as the Gaussian Error Linear Unit (GELU), are applied element-wise. Activation functions enable the network to grasp and approximate complex, non-linear relationships within the data.\\
+Activation functions play a crucial role in introducing non-linearity to the feedforward neural network layers. Following the self-attention mechanism's processing of input data, the results traverse through the feedforward neural network. This network involves linear transformations, and activation functions, such as the Gaussian Error Linear Unit (GELU), are applied element-wise. Activation functions enable the network to grasp and approximate complex, non-linear relationships within the data.
 
-\noindent The Gaussian Error Linear Unit (GELU) stands as an essential activation function within artificial neural networks. Specifically designed to introduce non-linearity to computational processes, GELU offers a seamless approximation to the rectifier linear unit (ReLU) while preserving differentiability.\\
+\noindent The Gaussian Error Linear Unit (GELU) stands as an essential activation function within artificial neural networks. Specifically designed to introduce non-linearity to computational processes, GELU offers a seamless approximation to the rectifier linear unit (ReLU) while preserving differentiability.
 
 \noindent Two formulations of the GELU function are commonly used:
 
@@ -32,9 +32,9 @@ Activation functions play a crucial role in introducing non-linearity to the fee
     P(X = c) \label{eq:probability}
 \end{equation}
 
-\noindent where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.\\
+\noindent where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.
 
-\noindent When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.\\
+\noindent When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.
 
 \noindent Compared to Rectified Linear Unit (ReLU) and Exponential Linear Unit (ELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
 
@@ -43,6 +43,8 @@ Activation functions play a crucial role in introducing non-linearity to the fee
     \includegraphics[width=6in]{img/gelu vs relu.png}
     \caption{{GeLU vs ReLU vs ELU graph}}
 \end{figure}
+
+\noindent Compared to Rectified Linear Unit (ReLU) and Exponential Linear Unit (ELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
 
 \subsubsection{Loss Function}
 The loss function employed in the Vision Transformer (ViT) model is a critical component for training the network and optimizing its performance in image classification tasks. The ViT loss function is designed to measure the disparity between the predicted class probabilities and the ground truth labels.
@@ -64,8 +66,7 @@ The primary loss utilized in ViT is the Cross-Entropy Loss, also known as catego
 \end{align*}
 
 \subsubsection{Bilinear Interpolation }
-Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.\\
-
+Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.
 
 \noindent \subparagraph{Steps}
 \begin{enumerate}
@@ -93,7 +94,7 @@ Bilinear interpolation is a widely used technique in image processing for estima
 
 \end{enumerate}
 \subsubsection{Layer Normalization}
-The Layer Normalization is applied independently to each position (or patch) in the input sequence.Layer Normalization is very similar to Batch normalization but layer normalization is favored because it works independently on each patch of the image sequence, aligning well with ViT's sequential processing.\\
+The Layer Normalization is applied independently to each position (or patch) in the input sequence.Layer Normalization is very similar to Batch normalization but layer normalization is favored because it works independently on each patch of the image sequence, aligning well with ViT's sequential processing.
 
 \noindent Given an input tensor $x$ at a particular position, the Layer Normalization is computed using the formula:
 
@@ -101,16 +102,15 @@ The Layer Normalization is applied independently to each position (or patch) in 
     \text{LayerNorm}(x) = \frac{x - \text{mean}(x)}{\sqrt{\text{var}(x) + \epsilon}} \cdot \gamma + \beta \label{eq:layer_norm}
 \end{equation}
 
-
-\noindent Here, $\text{mean}(x)$ and $\text{var}(x)$ represent the mean and variance of the input $x$ at that position, and $\gamma$ and $\beta$ are learnable parameters. $\epsilon$ is a small constant for numerical stability.\\
+\noindent Here, $\text{mean}(x)$ and $\text{var}(x)$ represent the mean and variance of the input $x$ at that position, and $\gamma$ and $\beta$ are learnable parameters. $\epsilon$ is a small constant for numerical stability.
 
 \noindent \textbf{Importance:}
-Layer Normalization is crucial for stabilizing training by normalizing the activations at each position. It helps mitigate change in the distribution of the input during training, making the model less sensitive to changes in input distribution. This normalization facilitates more stable and efficient training, enabling the model to better capture complex hierarchical features in image data.\\
+Layer Normalization is crucial for stabilizing training by normalizing the activations at each position. It helps mitigate change in the distribution of the input during training, making the model less sensitive to changes in input distribution. This normalization facilitates more stable and efficient training, enabling the model to better capture complex hierarchical features in image data.
 
 \subsubsection{Positional Encoding}
-Positional encoding is used Vision Transformer to provide information about the position of tokens in a sequence. Since transformers don't inherently understand the order of tokens, positional encoding helps inject spatial information into the input data.\\
+Positional encoding is used Vision Transformer to provide information about the position of tokens in a sequence. Since transformers don't inherently understand the order of tokens, positional encoding helps inject spatial information into the input data.
 
-\noindent Formula for 1D positional encoding for a token at position $pos$ in a sequence of length $L$ with embedding dimension $d$:\\
+\noindent Formula for 1D positional encoding for a token at position $pos$ in a sequence of length $L$ with embedding dimension $d$:
 
 \begin{equation}
     \text{PE}(pos, 2i) = \sin\left(\frac{pos}{10000^{2i/d}}\right) \label{eq:pos_encoding_sin}
@@ -121,12 +121,12 @@ Positional encoding is used Vision Transformer to provide information about the 
 \end{equation}
 
 
-\noindent Here, $pos$ is the position, $i$ is the dimension, and $d$ is the embedding dimension. The positional encoding values are added to the original embeddings of the tokens.\\
+\noindent Here, $pos$ is the position, $i$ is the dimension, and $d$ is the embedding dimension. The positional encoding values are added to the original embeddings of the tokens.
 
-\noindent In essence, the formula generates unique sinusoidal patterns for each position and dimension, enabling the model to distinguish the order of tokens in the sequence. This helps transformers effectively process sequential data, such as text or images divided into patches.\\
+\noindent In essence, the formula generates unique sinusoidal patterns for each position and dimension, enabling the model to distinguish the order of tokens in the sequence. This helps transformers effectively process sequential data, such as text or images divided into patches.
 
 \subsubsection{Softmax Score}
-The softmax function is used to convert a vector of real numbers into a probability distribution. In the context of machine learning and neural networks, it is often applied to the raw scores or logits produced by the model. The softmax function ensures that the values in the resulting vector are between 0 and 1 and sum to 1. It's commonly used in the output layer of a classification model to obtain probabilities for each class.\\
+The softmax function is used to convert a vector of real numbers into a probability distribution. In the context of machine learning and neural networks, it is often applied to the raw scores or logits produced by the model. The softmax function ensures that the values in the resulting vector are between 0 and 1 and sum to 1. It's commonly used in the output layer of a classification model to obtain probabilities for each class.
 
 \noindent Given an input vector \(z\) with \(K\) elements, the softmax function is calculated as follows:
 \begin{equation}
@@ -134,17 +134,17 @@ The softmax function is used to convert a vector of real numbers into a probabil
 \end{equation}
 
 
-\noindent Here, \(\text{Softmax}(z)_i\) represents the \(i\)-th element of the resulting softmax vector. \(e\) is the base of the natural logarithm (Euler's number). The numerator is the exponentiation of the \(i\)-th element of \(z\), and the denominator is the sum of the exponentiations of all elements in \(z\).\\
+\noindent Here, \(\text{Softmax}(z)_i\) represents the \(i\)-th element of the resulting softmax vector. \(e\) is the base of the natural logarithm (Euler's number). The numerator is the exponentiation of the \(i\)-th element of \(z\), and the denominator is the sum of the exponentiations of all elements in \(z\).
 
-\noindent The softmax operation essentially transforms the input vector into a probability distribution, making it suitable for tasks like multiclass classification where the goal is to assign probabilities to different classes.\\
+\noindent The softmax operation essentially transforms the input vector into a probability distribution, making it suitable for tasks like multiclass classification where the goal is to assign probabilities to different classes.
 
 \subsubsection{Adam Optimizer}
 
-\noindent The Adam optimizer, short for Adaptive Moment Estimation, combines the advantages of adaptive learning rates, momentum optimization, and the Root Mean Square Propagation (RMSProp) algorithm. Adam is known for its efficiency, stability, and adaptability across a variety of neural network architectures and datasets.\\
+\noindent The Adam optimizer, short for Adaptive Moment Estimation, combines the advantages of adaptive learning rates, momentum optimization, and the Root Mean Square Propagation (RMSProp) algorithm. Adam is known for its efficiency, stability, and adaptability across a variety of neural network architectures and datasets.
 
-\noindent Adam excels in handling large datasets with varying or sparse gradients. It dynamically adjusts learning rates for each parameter, enhancing adaptability during training. By integrating momentum and RMSProp techniques, Adam accelerates convergence and prevents local minima.\\
+\noindent Adam excels in handling large datasets with varying or sparse gradients. It dynamically adjusts learning rates for each parameter, enhancing adaptability during training. By integrating momentum and RMSProp techniques, Adam accelerates convergence and prevents local minima.
 
-The Adam optimizer updates model parameters based on the following mathematical expressions:
+\noindent The Adam optimizer updates model parameters based on the following mathematical expressions:
 
 \begin{enumerate}
     \item \textbf{Initialization:}
@@ -177,7 +177,7 @@ Where:
     \item \( \epsilon \) is a small constant to prevent division by zero.
 \end{itemize}
 
-These equations describe the adaptive learning rate mechanism and the combination of momentum and RMSProp, for Adams Optimizer
+\noindent These equations describe the adaptive learning rate mechanism and the combination of momentum and RMSProp, for Adams Optimizer.
 
 
 
