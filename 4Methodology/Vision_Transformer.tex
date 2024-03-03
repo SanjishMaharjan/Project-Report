@@ -82,7 +82,7 @@ MSA extends SA by running $k$ self-attention operations (heads) in parallel and 
     \mathbf{h}^{(l+1)} & = \text{GELU}\left(\mathbf{W}^{(l)} \mathbf{h}^{(l)} + \mathbf{b}^{(l)}\right) \label{eq:feedforward}
 \end{align}
 
-where $\mathbf{h}^{(l)}$ is the output of the $l$-th layer, $\mathbf{W}^{(l)}$ is the weight matrix, $\mathbf{b}^{(l)}$ is the bias vector, and $\text{GELU}(\cdot)$ is the Gaussian Error Linear Unit activation function.
+\noindent where $\mathbf{h}^{(l)}$ is the output of the $l$-th layer, $\mathbf{W}^{(l)}$ is the weight matrix, $\mathbf{b}^{(l)}$ is the bias vector, and $\text{GELU}(\cdot)$ is the Gaussian Error Linear Unit activation function.
 \\
 
 \noindent The feedforward neural networks in the Vision Transformer's transformer encoder process each patch embedding independently through these layers, capturing complex patterns and relationships within the data.

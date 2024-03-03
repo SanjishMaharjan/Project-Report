@@ -2,8 +2,13 @@
 
 \subsubsection{Activation Function: Gaussian Error Linear Unit (GELU)}
 Activation functions play a crucial role in introducing non-linearity to the feedforward neural network layers. Following the self-attention mechanism's processing of input data, the results traverse through the feedforward neural network. This network involves linear transformations, and activation functions, such as the Gaussian Error Linear Unit (GELU), are applied element-wise. Activation functions enable the network to grasp and approximate complex, non-linear relationships within the data.\\
+<<<<<<< HEAD
 \\
 The Gaussian Error Linear Unit (GELU) stands as an essential activation function within artificial neural networks. Specifically designed to introduce non-linearity to computational processes, GELU offers a seamless approximation to the rectifier linear unit (ReLU) while preserving differentiability.\\
+=======
+
+\noindent The Gaussian Error Linear Unit (GELU) stands as an essential activation function within artificial neural networks. Specifically designed to introduce non-linearity to computational processes, GELU offers a seamless approximation to the rectifier linear unit (ReLU) while preserving differentiability.\\
+>>>>>>> 0146326a4e58be7d9eb4e75a5d198553f41b641f
 
 \noindent Two formulations of the GELU function are commonly used:
 
@@ -11,13 +16,13 @@ The Gaussian Error Linear Unit (GELU) stands as an essential activation function
     \text{GELU}(x) = 0.5x \left(1 + \tanh\left(\frac{\pi}{2} \cdot \left(x + 0.044715x^3\right)\right)\right) \label{eq:gelu}
 \end{equation}
 
-and
+\noindent and
 
 \begin{equation}
     \text{GELU}(x) = \frac{1}{2}x \left(1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right) \label{eq:gelu2}
 \end{equation}
 
-Where:
+\noindent Where:
 \begin{itemize}
     \item $x$ is the input to the GELU function.
     \item $\text{erf}(z)$ is the error function.
@@ -32,9 +37,18 @@ Where:
     P(X = c) \label{eq:probability}
 \end{equation}
 
+<<<<<<< HEAD
 where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.\\
 \\
 When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.\\
+=======
+\noindent where $X$ represents a random variable and $c$ is a constant value. This expression is used to represent the probability that the random variable $X$ takes on the value $c$.\\
+
+\noindent When no activation function is used in a neural network, the model essentially reduces to a linear regression or a linear transformation. Consequently, the entire neural network collapses into a single linear transformation, regardless of the number of layers. This severely limits the expressive power of the network, as it can only learn linear relationships in the data.\\
+
+\noindent Compared to Rectified Linear Unit (ReLU) and Exponential Linear Unit (ELU), the Gaussian Error Linear Unit (GELU) activation function stands out for its smoothness, handling of negative inputs, and ability to capture complex patterns. ReLU sets all negative values to zero during the forward pass, which can lead to "dead neurons" that never activate and do not contribute to learning. This can result in a loss of information and slower convergence during training. Whereas, ELU largely suffers from vanishing gradient problem.
+
+>>>>>>> 0146326a4e58be7d9eb4e75a5d198553f41b641f
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6in]{img/gelu vs relu.png}
@@ -56,7 +70,7 @@ The primary loss utilized in ViT is the Cross-Entropy Loss, also known as catego
     L(y, \hat{y}) = -\sum_i y_i \cdot \log(\hat{y}_i) \label{eq:loss_function}
 \end{equation}
 
-where:
+\noindent where:
 \begin{align*}
     y       & \text{ is the ground truth label vector,}                 \\
     \hat{y} & \text{ is the predicted probability distribution vector,} \\
@@ -64,8 +78,10 @@ where:
 \end{align*}
 
 \subsubsection{Bilinear Interpolation }
-Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.
-\subparagraph{Steps}
+Bilinear interpolation is a widely used technique in image processing for estimating pixel values at non-integer coordinates within an image. This method is particularly valuable when scaling or resizing images, offering a smoother transition between neighboring pixels compared to simpler interpolation methods ensuring a smoother and visually appealing transition between pixel values, contributing to improved image quality in various computer graphics and computer vision applications.\\
+
+
+\noindent \subparagraph{Steps}
 \begin{enumerate}
     \item \textbf{Identify Neighboring Pixels:}Given a non-integer coordinate (x, y), locate the four nearest pixels in the image: (x1, y1), (x1, y2), (x2, y1), and (x2, y2), defining a rectangular region
 
@@ -102,7 +118,12 @@ The Layer Normalization is applied independently to each position (or patch) in 
 
 \noindent Here, $\text{mean}(x)$ and $\text{var}(x)$ represent the mean and variance of the input $x$ at that position, and $\gamma$ and $\beta$ are learnable parameters. $\epsilon$ is a small constant for numerical stability.\\
 
+<<<<<<< HEAD
 \noindent \textbf{Importance:}Layer Normalization is crucial for stabilizing training by normalizing the activations at each position. It helps mitigate change in the distribution of the input during training, making the model less sensitive to changes in input distribution. This normalization facilitates more stable and efficient training, enabling the model to better capture complex hierarchical features in image data.\\
+=======
+\noindent \textbf{Importance:}
+Layer Normalization is crucial for stabilizing training by normalizing the activations at each position. It helps mitigate change in the distribution of the input during training, making the model less sensitive to changes in input distribution. This normalization facilitates more stable and efficient training, enabling the model to better capture complex hierarchical features in image data.\\
+>>>>>>> 0146326a4e58be7d9eb4e75a5d198553f41b641f
 
 \subsubsection{Positional Encoding}
 Positional encoding is used Vision Transformer to provide information about the position of tokens in a sequence. Since transformers don't inherently understand the order of tokens, positional encoding helps inject spatial information into the input data.\\
@@ -125,8 +146,12 @@ Positional encoding is used Vision Transformer to provide information about the 
 \subsubsection{Softmax Score}
 The softmax function is used to convert a vector of real numbers into a probability distribution. In the context of machine learning and neural networks, it is often applied to the raw scores or logits produced by the model. The softmax function ensures that the values in the resulting vector are between 0 and 1 and sum to 1. It's commonly used in the output layer of a classification model to obtain probabilities for each class.\\
 
+<<<<<<< HEAD
 \noindent Given an input vector \(z\) with \(K\) elements, the softmax function is calculated as follows:\\
 
+=======
+\noindent Given an input vector \(z\) with \(K\) elements, the softmax function is calculated as follows:
+>>>>>>> 0146326a4e58be7d9eb4e75a5d198553f41b641f
 \begin{equation}
     \text{Softmax}(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \label{eq:softmax}
 \end{equation}
@@ -138,7 +163,7 @@ The softmax function is used to convert a vector of real numbers into a probabil
 
 \subsubsection{Adam Optimizer}
 
-The Adam optimizer, short for Adaptive Moment Estimation, combines the advantages of adaptive learning rates, momentum optimization, and the Root Mean Square Propagation (RMSProp) algorithm. Adam is known for its efficiency, stability, and adaptability across a variety of neural network architectures and datasets.\\
+\noindent The Adam optimizer, short for Adaptive Moment Estimation, combines the advantages of adaptive learning rates, momentum optimization, and the Root Mean Square Propagation (RMSProp) algorithm. Adam is known for its efficiency, stability, and adaptability across a variety of neural network architectures and datasets.\\
 
 \noindent Adam excels in handling large datasets with varying or sparse gradients. It dynamically adjusts learning rates for each parameter, enhancing adaptability during training. By integrating momentum and RMSProp techniques, Adam accelerates convergence and prevents local minima.\\
 

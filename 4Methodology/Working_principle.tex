@@ -23,7 +23,7 @@ The comprehensive and detailed explanation of the functioning of our model is pr
     PE_{(pos, 2i+1)} & = \cos\left(\frac{pos}{{10000}^{(2i/d)}}\right) \label{eq:pos_encoding_cos}
 \end{align}
 
-Where:
+\noindent Where:
 \begin{align*}
     \text{pos} & : \text{the position of the token in the sequence.} \\
     i          & : \text{the dimension of the positional encoding.}  \\
@@ -74,6 +74,7 @@ Where:
 \[ X \in \mathbb{R}^{N \times D}\]
 
 \noindent For a single head attention we project each patch embeddings for 3 separate iterations to produce the key, queries, and values. The three matrices to produce the keys, queries, and values would be:
+\noindent For a single head attention we project each patch embeddings for 3 separate iterations to produce the key, queries, and values. The three matrices to produce the keys, queries, and values would be:
 \[ W^Q \in \mathbb{R}^{D\times d_k}\]
 \[ W^K \in \mathbb{R}^{D \times d_k}\]
 \[ W^V \in \mathbb{R}^{D \times d_v}\]
@@ -91,7 +92,9 @@ Where:
 \end{align}
 
 \noindent The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
+\noindent The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
 
+\noindent The general form of the scaled dot-product attention is given as:
 \noindent The general form of the scaled dot-product attention is given as:
 \begin{equation}
     \text{Attention}(h) = \text{softmax}\left(\frac{Q_h \cdot K_h ^T}{\sqrt{d_k}}\right) V_h
@@ -99,6 +102,7 @@ Where:
 T
 \noindent he softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
 
+\noindent Finally,
 \noindent Finally,
 \begin{equation}
     \text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o
@@ -124,17 +128,18 @@ T
 \noindent After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.
 
 \noindent The expression for MLP is given as:
+\noindent The expression for MLP is given as:
 \begin{equation}
     \text{MLP}(x) = W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2 \label{eq:mlp}
 \end{equation}
 where:
 \begin{align*}
     x      & : \text{the input vector,}                              \\
-    W_1    & : \text{the weight matrix for the first linear layer,}  \\
-    b_1    & : \text{the bias vector for the first layer,}           \\
     \sigma & : \text{GeLU activation function (non-linear),}         \\
+    b_1    & : \text{the bias vector for the first layer,}           \\
+    b_2    & : \text{the bias vector for the second layer.}          \\
+    W_1    & : \text{the weight matrix for the first linear layer,}  \\
     W_2    & : \text{the weight matrix for the second linear layer,} \\
-    b_2    & : \text{the bias vector for the second layer.}
 \end{align*}
 Usually, an expansion factor of 4 is commonly employed as it is observed to be effective based on empirical evidence.
 
@@ -152,7 +157,7 @@ Usually, an expansion factor of 4 is commonly employed as it is observed to be e
     (\text{OUTPUT}) = (Y) + \text{MLP} (\text{Normalization} (Y)) \label{eq:mlp_output}
 \end{equation}
 
-where:
+\noindent where:
 \begin{align*}
     \text{X} & : \text{Input for MHA}                 \\
     \text{Y} & : \text{Output from MHA Input for MLP} \\
@@ -162,11 +167,11 @@ where:
     \includegraphics[width=2in]{img/residual connection.png}
     \caption{{Residual connection}}
 \end{figure}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=5.5in]{img/MLP workings.png}
-    \caption{{Workings in MLP}}
-\end{figure}
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=5.5in]{img/MLP workings.png}
+%     \caption{{Workings in MLP}}
+% \end{figure}
 
 Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition.
 
