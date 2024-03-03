@@ -15,7 +15,7 @@
         \hline
         \textbf{Tested images (real and fake)}  & 10K , 10K           \\
         \hline
-        \textbf{Validation (real and fake)}     & 10.5K , 10.5K           \\
+        \textbf{Validation (real and fake)}     & 10.5K , 10.5K       \\
         \hline
         \textbf{Balanced}                       & True                \\
         \hline
@@ -109,10 +109,10 @@ The performance of our model is associated with various metrics such as:
 \subsubsection{Loss Curve}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width= 5in, height =5in ]{img/lossVsAccuracy.png}
+    \includegraphics[width= 5in, height =4in ]{img/lossVsAccuracy.png}
     \caption{{Training Vs Validation loss Curve}}
 \end{figure}
-This plot shows how well our model is doing over time. The horizontal line represents the number of times we've trained the model, and the vertical line shows how well it's performing (lower is better). We have two lines on the graph: one for how well the model is doing during training, and another for how well it's doing on new, unseen data. The goal is to have both lines go down, meaning the model is learning well. By analyzing the "Loss vs. Epoch" plot, one can identify various aspects of the model's performance, such as overfitting, underfitting, and the effectiveness of early stopping.
+\noindent This plot shows how well our model is doing over time. The horizontal line represents the number of times we've trained the model, and the vertical line shows how well it's performing (lower is better). We have two lines on the graph: one for how well the model is doing during training, and another for how well it's doing on new, unseen data. The goal is to have both lines go down, meaning the model is learning well. By analyzing the "Loss vs. Epoch" plot, one can identify various aspects of the model's performance, such as overfitting, underfitting, and the effectiveness of early stopping.
 
 \newpage
 \subsubsection{Accuracy Curve}
@@ -121,7 +121,7 @@ This plot shows how well our model is doing over time. The horizontal line repre
     \includegraphics[width=5in, height =5in ]{img/accuracyVsepoch.png}
     \caption{{Training Vs Validation Accuracy Curve }}
 \end{figure}
-In this graph, the horizontal axis shows the number of training epochs, while the vertical axis represents the accuracy (both training and validation) of our model. Higher accuracy values indicate better overall performance. The plot typically displays two lines: one for training accuracy, reflecting the model's improvement during training, and another for validation accuracy, indicating how well the model generalizes to new, unseen data. Analyzing the "Accuracy vs. Epoch" plot helps identify aspects of the model's performance, including potential overfitting, underfitting, and the effectiveness of early stopping strategies.
+\noindent In this graph, the horizontal axis shows the number of training epochs, while the vertical axis represents the accuracy (both training and validation) of our model. Higher accuracy values indicate better overall performance. The plot typically displays two lines: one for training accuracy, reflecting the model's improvement during training, and another for validation accuracy, indicating how well the model generalizes to new, unseen data. Analyzing the "Accuracy vs. Epoch" plot helps identify aspects of the model's performance, including potential overfitting, underfitting, and the effectiveness of early stopping strategies.
 With the increase of epoch for validation, unlike loss, there is increase in accuracy.
 \newpage
 \subsubsection{Confusion Matrix}
@@ -130,7 +130,7 @@ With the increase of epoch for validation, unlike loss, there is increase in acc
     \includegraphics[width=5in, height =5in ]{img/confusionMatrixImage.png}
     \caption{{Confusion Matrix }}
 \end{figure}
-The confusion matrix is a valuable tool for evaluating our model's ability to classify images as either "real" or "fake." Simply put, it organizes results into a grid where rows represent the actual labels of images, columns depict the predicted labels, and the numbers within cells show how many images fall into each category. For instance, the top-left cell indicates that 9,699 images were correctly identified as real. The diagonal of the matrix reveals that a total of 10,000 images were accurately classified, demonstrating the model's effectiveness. However, the presence of off-diagonal elements, like the bottom-right cell showing 9,061 misclassified fake images, points to areas for improvement. While the model performs well overall, these misclassifications suggest some challenges. Through the confusion matrix, we can dive into more specific metrics like accuracy, precision, recall, and F1-score, offering detailed insights to refine the model's image classification capabilities.
+\noindent The confusion matrix is a valuable tool for evaluating our model's ability to classify images as either "real" or "fake." Simply put, it organizes results into a grid where rows represent the actual labels of images, columns depict the predicted labels, and the numbers within cells show how many images fall into each category. For instance, the top-left cell indicates that 9,699 images were correctly identified as real. The diagonal of the matrix reveals that a total of 10,000 images were accurately classified, demonstrating the model's effectiveness. However, the presence of off-diagonal elements, like the bottom-right cell showing 9,061 misclassified fake images, points to areas for improvement. While the model performs well overall, these misclassifications suggest some challenges. Through the confusion matrix, we can dive into more specific metrics like accuracy, precision, recall, and F1-score, offering detailed insights to refine the model's image classification capabilities.
 \newpage
 \subsubsection{Receiver Operating Characteristic (ROC) curve:}
 \begin{figure}[ht]
@@ -139,7 +139,7 @@ The confusion matrix is a valuable tool for evaluating our model's ability to cl
     \caption{{ROC curve }}
 \end{figure}
 
-The ROC curve visually represents the performance of a binary classification model, such as detecting fake images. The x-axis measures the False Positive Rate (FPR), indicating how often the model incorrectly identifies real images as fake images. The y-axis measures the True Positive Rate (TPR), indicating how often the model correctly identifies fake images. A curve closer to the upper left corner signifies better performance, indicating high TPR and low FPR. The Area Under the Curve (AUC) summarizes overall performance; a value of 0.94, as seen in the image, suggests good segregation  between real and fake images.
+\noindent The ROC curve visually represents the performance of a binary classification model, such as detecting fake images. The x-axis measures the False Positive Rate (FPR), indicating how often the model incorrectly identifies real images as fake images. The y-axis measures the True Positive Rate (TPR), indicating how often the model correctly identifies fake images. A curve closer to the upper left corner signifies better performance, indicating high TPR and low FPR. The Area Under the Curve (AUC) summarizes overall performance; a value of 0.94, as seen in the image, suggests good segregation  between real and fake images.
 \newpage
 \subsection{K-Fold Cross-Validation}
 
@@ -177,9 +177,9 @@ K-fold cross-validation is a technique used to assess the performance and genera
     \label{tab:kfold_results}
 \end{table}
 
-The average validation accuracy across all folds is approximately \(92.85\%\). The model's performance ranges from a minimum accuracy of \(91\%\) to a maximum of \(94\%\), indicating consistency in the model's predictive power. The standard deviation of \(0.00835\) is a measure of how much the accuracies deviate from the average, providing insights into the stability and reliability of the model across different folds. This suggests that the deepfake detection model using ViTs has achieved a consistently high level of accuracy across multiple folds.\\
+\noindent The average validation accuracy across all folds is approximately \(92.85\%\). The model's performance ranges from a minimum accuracy of \(91\%\) to a maximum of \(94\%\), indicating consistency in the model's predictive power. The standard deviation of \(0.00835\) is a measure of how much the accuracies deviate from the average, providing insights into the stability and reliability of the model across different folds. This suggests that the deepfake detection model using ViTs has achieved a consistently high level of accuracy across multiple folds.\\
 
-The trends or patterns observed in the validation accuracies can help in understanding how well our integrated model generalizes to unseen data and its overall performance.
+\noindent The trends or patterns observed in the validation accuracies can help in understanding how well our integrated model generalizes to unseen data and its overall performance.
 
 
 \newpage
@@ -306,10 +306,4 @@ Following are the UIs with user authentication, login page and home page where w
         \caption{{History page}}
     \end{subfigure}
     \caption{Result and History page}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height= 5in]{img/profilev2.png}
-    \caption{{Profile page}}
 \end{figure}
