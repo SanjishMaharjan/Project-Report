@@ -60,7 +60,7 @@ For an input sequence $z \in \mathbf{R}^{N \times D}$ (with $N$ elements, each h
     \text{SA}(z) & = Av \label{eq:selfattention}
 \end{align}
 
-MSA extends SA by running $k$ self-attention operations (heads) in parallel and then concatenating their outputs. To ensure consistent computation and parameter complexity, the dimension $Dh$ (from Eq. 5) is usually set to $D/k$.
+\noindent MSA extends SA by running $k$ self-attention operations (heads) in parallel and then concatenating their outputs. To ensure consistent computation and parameter complexity, the dimension $Dh$ (from Eq. 5) is usually set to $D/k$.
 \begin{align}
     \text{MSA}(z) & = [SA_1(z); SA_2(z); \ldots ; SA_k(z)], \quad U_{msa} \in \mathbf{R}^{k \cdot Dh \times D} \label{eq:multiheadselfattention}
 \end{align}
@@ -103,7 +103,7 @@ The Classification Head is the final component of the Vision Transformer archite
 \noindent \textbf{3. Decision Making:} The model uses this summary to decide what the image might be. For example, it could be deciding if an image is real or fake. It does this by comparing the features it has learned to what it has seen during training.
 \\
 
-\noindent \textbf{4. Class Prediction:} The model assigns a score to each possible class (like "real" or "manipulated"). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
+\noindent \textbf{4. Class Prediction:} The model assigns a score to each possible class (like 'real' or 'manipulated'). It does this by multiplying the summary with a set of numbers that it learned. Then, it uses the softmax function to turn these scores into probabilities. The class with the highest probability is the final prediction.
 
 \subsection{Benefits of Vision Transformer}
 
