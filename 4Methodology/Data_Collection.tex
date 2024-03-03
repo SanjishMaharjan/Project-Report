@@ -35,25 +35,54 @@ Our dataset contains data from well-known public sources, and each of these sour
 
 \subsubsection{Video Conversion}
 To include videos in our dataset, we first converted them into individual frames (images) to facilitate compatibility with the vision transformer architecture. This step involved extracting frames at a consistent frame rate from each video, resulting in a sequence of images for each video.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width= 5in ]{img/framesExtracted.jpg}
-    \caption{Video Sample}
-\end{figure}
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width= 5in ]{img/frames.jpg}
-    \caption{Frames Extracted from video}
-\end{figure}
-
 \subsubsection{Frame Selection}
 To avoid redundancy and maintain dataset balance, we carefully selected frames from videos to represent various stages of manipulation, expressions, poses, and lighting conditions.
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width= 5in ]{img/frameSelected.jpg}
-    \caption{Seleting required frames}
-\end{figure}
+\begin{figure}[ht]
+    \begin{minipage}{0.9\linewidth}
+      \centering
+      \includegraphics[width= 3.5in,height=1.9in ]{img/framesExtracted.jpg}
+      \caption{Video Sample}
+      
+    \end{minipage}
+    
+    \vspace{.5cm} % Add vertical space between images
+  
+    \begin{minipage}{0.9\linewidth}
+      \centering
+      \includegraphics[width= 3.5in, height=1.5in ]{img/frames.jpg}
+    \caption{Frames Extracted from video}
+     
+    \end{minipage}
+    
+    \vspace{.5cm} % Add vertical space between images
+  
+    \begin{minipage}{0.9\linewidth}
+      \centering
+      \includegraphics[width= 3.5in,height=1.9in ]{img/frameSelected.jpg}
+      \caption{Selecting required frames}
+    \end{minipage}
+    
+  \end{figure}
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width= 4in ]{img/framesExtracted.jpg}
+%     \caption{Video Sample}
+% \end{figure}
+% \hfill
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 4in ]{img/frames.jpg}
+%     \caption{Frames Extracted from video}
+% \end{figure}
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width= 4in ]{img/frameSelected.jpg}
+%     \caption{Seleting required frames}
+% \end{figure}
+% \\
+
+
 
 
 \subsubsection{Annotation and Labeling}

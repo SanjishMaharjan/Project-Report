@@ -42,6 +42,11 @@ Let $\mathbf{X} \in \mathbf{R}^{H \times W \times C}$ represent the original ima
 
 \subsubsection{Transformer Encoder}
 The patch embeddings are then processed through a stack of transformer encoder layers. Each of these layers consists of two main components: multi-head self-attention and feedforward neural networks.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=6in]{img/encoderdetails.jpg}
+    \caption{{Transformer Encoder}}
+\end{figure}
 
 \noindent \textbf{a. Multi-head self-attention:} This mechanism allows the model to consider relationships between different patches, both locally and globally. It assigns different attention weights to different patches based on their relevance to each other, enabling the model to capture long-range dependencies and relationships within the image.
 
@@ -58,18 +63,12 @@ For an input sequence $z \in \mathbf{R}^{N \times D}$ (with $N$ elements, each h
     \text{MSA}(z) & = [SA_1(z); SA_2(z); \ldots ; SA_k(z)], \quad U_{msa} \in \mathbf{R}^{k \cdot Dh \times D} \label{eq:multiheadselfattention}
 \end{align}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=6in]{img/encoderdetails.jpg}
-    \caption{{Transformer Encoder}}
-\end{figure}
 
 \noindent \textbf{b. Feedforward neural networks:} After the attention mechanism, the data passes through feedforward neural networks, which process and transform the information further, helping the Vision Transformer model learn intricate features and patterns in the image data.
 
 \noindent Feedforward neural networks consist of multiple layers, including fully connected (dense) layers followed by non-linear activation functions. Let's denote the input to the feedforward neural network as $\mathbf{x} \in \mathbf{R}^{D_{\text{FFN}}}$, where $D_{\text{FFN}}$ is the dimension of the input features.
 
 \noindent The transformation in each layer of the feedforward neural network can be represented as follows:
-
 \begin{align}
     \mathbf{h}^{(l+1)} & = \text{GELU}\left(\mathbf{W}^{(l)} \mathbf{h}^{(l)} + \mathbf{b}^{(l)}\right) \label{eq:feedforward}
 \end{align}
@@ -111,4 +110,4 @@ The Vision TransformerS (ViT) model has several advantages over many other previ
     \item Originally designed for image classification, Vision Transformers display adaptability to diverse modals, proving advantageous for multi-modal deepfake detection cases.
 
 \end{itemize}
-\newpage
+
