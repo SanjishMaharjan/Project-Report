@@ -1,23 +1,23 @@
 \subsection{Working Description}
 
-The comprehensive and detailed explanation of the functioning of our model is provided below:\\
+The comprehensive and detailed explanation of the functioning of our model is provided below:
 
+\noindent After the completion of preprocessing steps, the images that are to be fed into the model are first transformed into  256 x 256 size using bilinear interpolation. Then the images are transformed into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the our model architecture. The image is divided into non-overlapping patches, each undergoing linear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.
 
-After the completion of preprocessing steps, the images that are to be fed into the model are first transformed into  256 x 256 size using bilinear interpolation. Then the images are transformed into numeric vectors, a step known as input embedding. This process is crucial for aligning raw image data with the our model architecture. The image is divided into non-overlapping patches, each undergoing linear embedding to create fixed-size vectors. This transforms the image into a sequential arrangement of vectors, enabling sequential processing by the transformer model.\\
-
-Initially, the input image undergoes segmentation into patches, a necessary step to conform with the sequential processing design of transformers. The formulation of these patches considers factors such as the image's height, width, color channels (red, green, and blue), and the batch size for multiple images. The input image, characterized by specific dimensions in terms of height and width, three color channels, and an optional batch dimension for multiple images, is thus transformed into a sequence to align with the architecture of transformers.\\
+\noindent Initially, the input image undergoes segmentation into patches, a necessary step to conform with the sequential processing design of transformers. The formulation of these patches considers factors such as the image's height, width, color channels (red, green, and blue), and the batch size for multiple images. The input image, characterized by specific dimensions in terms of height and width, three color channels, and an optional batch dimension for multiple images, is thus transformed into a sequence to align with the architecture of transformers.\\
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=4in]{img/colorbatch.png}
     \caption{{Image with RGB color channels}}
-\end{figure}\\
-The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a linear transformation that ultimately yields embedding vectors. A linear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.\\
+\end{figure}
 
-Einops-Einstein Operation, is a Python library that was used which simplifies tensor operations. Inspired by Einstein summation conventions, it offers an expressive syntax for reshaping and reducing and manipulation of tensors. \\
+\noindent The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a linear transformation that ultimately yields embedding vectors. A linear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.
 
-After completing the patching process, the original positions of the patches within an image becomes unknown. To address this, position embedding is employed. Since the attention mechanism in transformers is position-independent, position embedding is introduced to enable the model to comprehend the specific locations of each patch in the original image. A vector is assigned to each patch, representing its unique position within the image. The values within these position embedding vectors are derived from sine and cosine functions.\\
+\noindent Einops-Einstein Operation, is a Python library that was used which simplifies tensor operations. Inspired by Einstein summation conventions, it offers an expressive syntax for reshaping and reducing and manipulation of tensors.
 
-The positional encoding can be obtained as:\\
+\noindent After completing the patching process, the original positions of the patches within an image becomes unknown. To address this, position embedding is employed. Since the attention mechanism in transformers is position-independent, position embedding is introduced to enable the model to comprehend the specific locations of each patch in the original image. A vector is assigned to each patch, representing its unique position within the image. The values within these position embedding vectors are derived from sine and cosine functions.
+
+\noindent The positional encoding can be obtained as:
 \begin{align}
     PE_{(pos, 2i)}   & = \sin\left(\frac{pos}{{10000}^{(2i/d)}}\right) \label{eq:pos_encoding_sin} \\
     PE_{(pos, 2i+1)} & = \cos\left(\frac{pos}{{10000}^{(2i/d)}}\right) \label{eq:pos_encoding_cos}
@@ -41,8 +41,9 @@ Where:
     \includegraphics[width=4in]{img/pos 10.png}
     \caption{{Graph for sine and cosine wave  at position 10}}
 \end{figure}
-From the graph below, for a patch at position 10, the values in its associated position embedding vectors is equivalent to to corresponding values intersecting within the curve as shown in the graph.\\
-In the process of adding position embeddings to an image, we introduced a special vector known as the CLS token, where CLS stands for Classification Token. The CLS token is a unique vector assigned to each input image. Initially, it receives random values and is considered a placeholder. However, as the model learns, these values are adjusted based on the information gathered from all other input patches. This adjustment process makes the CLS token a "learnable vector," as it evolves during training to contribute valuable information for the classification task.\\
+\noindent From the graph below, for a patch at position 10, the values in its associated position embedding vectors is equivalent to to corresponding values intersecting within the curve as shown in the graph.
+
+\noindent In the process of adding position embeddings to an image, we introduced a special vector known as the CLS token, where CLS stands for Classification Token. The CLS token is a unique vector assigned to each input image. Initially, it receives random values and is considered a placeholder. However, as the model learns, these values are adjusted based on the information gathered from all other input patches. This adjustment process makes the CLS token a "learnable vector," as it evolves during training to contribute valuable information for the classification task.\\
 
 \begin{figure}[htbp]
     \centering
@@ -50,31 +51,29 @@ In the process of adding position embeddings to an image, we introduced a specia
     \caption{{CLS Token and position embedding vectors}}
 \end{figure}
 
-\noindent The CLS token functions as a universal feature extractor, capturing the essence of the entire image. This extracted information can then be utilized for various tasks downstream. The learning positional embeddings helps reduce inductive biases. These embeddings are added on top of input embedding vectors and are not concatenated with them.\\
-\\
-The Embedded Patches are then passed onto the Encoder section of the model.\\
+\noindent The CLS token functions as a universal feature extractor, capturing the essence of the entire image. This extracted information can then be utilized for various tasks downstream. The learning positional embeddings helps reduce inductive biases. These embeddings are added on top of input embedding vectors and are not concatenated with them.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=6.3in]{img/transformer_encoder.png}
     \caption{{Transformer Encoder}}
 \end{figure}
+\noindent The Embedded Patches are then passed onto the Encoder section of the model. Multihead attention is a mechanism designed to capture different aspects or relationships within input sequences. It involves splitting the input into multiple heads or sets, each with its own set of learned weights. The attention mechanism is then applied independently to each head in parallel. The multihead attention is the scaled dot product attention mechanism of the transformer and allows to share info between different inputs.
 
-\noindent Multihead attention is a mechanism designed to capture different aspects or relationships within input sequences. It involves splitting the input into multiple heads or sets, each with its own set of learned weights. The attention mechanism is then applied independently to each head in parallel.
-The multihead attention is the scaled dot product attention mechanism of the transformer and allows to share info between different inputs.\\
+\noindent In multihead attention, there are three primary inputs:
 
-\noindent In multihead attention, there are three primary inputs:\\
+\textbf{Query (Q):} This represents the set of queries used to retrieve information from the input sequence. It is usually derived from the input data and is transformed to capture relevant features.
 
-\textbf{Query (Q):} This represents the set of queries used to retrieve information from the input sequence. It is usually derived from the input data and is transformed to capture relevant features.\\
+\textbf{Key (K):} The key input consists of keys associated with each element in the input sequence. Like the query, it is derived from the input data and aims to provide information about the relationships between different elements.
 
-\textbf{Key (K):} The key input consists of keys associated with each element in the input sequence. Like the query, it is derived from the input data and aims to provide information about the relationships between different elements.\\
+\textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.
 
-\textbf{Value (V):} The value input includes the values or content associated with each element in the input sequence. It also comes from the input data and provides the actual information that will be weighted and combined based on the attention mechanism.\\
+\noindent The Multihead attention process is also regarded as the process where there is inter linkage between the inputs such that exchange of information takes place. To put these Q, K and V to a simple understanding, value is the component that actually is communicated in multihead attention process, query is equivalent for "what i am looking for" and key is equivalent for "what i have."
 
-The Multihead attention process is also regarded as the process where there is inter linkage between the inputs such that exchange of information takes place. To put these Q, K and V to a simple understanding, value is the component that actually is communicated in multihead attention process, query is equivalent for "what i am looking for" and key is equivalent for "what i have."\\
-For further explanation on Multihead Attention, suppose we have inputs to attention blocks of N embeddings (total N+1 including CLS token) and dimension D. With the help of N and D, a stacked matrix can be obtained.
+\noindent For further explanation on Multihead Attention, suppose we have inputs to attention blocks of N embeddings (total N+1 including CLS token) and dimension D. With the help of N and D, a stacked matrix can be obtained.
 \[ X \in \mathbb{R}^{N \times D}\]
 
-For a single head attention we project each patch embeddings for 3 separate iterations to produce the key, queries, and values. The three matrices to produce the keys, queries, and values would be:
+\noindent For a single head attention we project each patch embeddings for 3 separate iterations to produce the key, queries, and values. The three matrices to produce the keys, queries, and values would be:
 \[ W^Q \in \mathbb{R}^{D\times d_k}\]
 \[ W^K \in \mathbb{R}^{D \times d_k}\]
 \[ W^V \in \mathbb{R}^{D \times d_v}\]
@@ -83,27 +82,29 @@ Where:
     d_k & : \text{the dimension of query and key .} \\
     d_v & : \text{the dimension of values.}
 \end{align*}
-Therefore, the key(K), query(Q), and value(V) can be obtained when the original embedding matrix X is multiplied with the above-mentioned matrices.
+
+\noindent Therefore, the key(K), query(Q), and value(V) can be obtained when the original embedding matrix X is multiplied with the above-mentioned matrices.
 \begin{align}
     Q & = X.W^Q \in \mathbb{R}^{N\times d_k} \\
     K & = X.W^K \in \mathbb{R}^{N\times d_k} \\
     V & = X.W^V \in \mathbb{R}^{N\times d_v}
 \end{align}
 
-The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
+\noindent The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
 
-The general form of the scaled dot-product attention is given as:
+\noindent The general form of the scaled dot-product attention is given as:
 \begin{equation}
     \text{Attention}(h) = \text{softmax}\left(\frac{Q_h \cdot K_h ^T}{\sqrt{d_k}}\right) V_h
 \end{equation}
-The softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
+T
+\noindent he softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
 
-Finally,
+\noindent Finally,
 \begin{equation}
     \text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o
 \end{equation}
 
-$W^0$ is added to ensure the right dimension is obtained.
+\noindent Here, $W^0$ is added to ensure the right dimension is obtained.
 
 
 \begin{figure}[htbp]
@@ -112,22 +113,20 @@ $W^0$ is added to ensure the right dimension is obtained.
     \caption{{Attention head visualization}}
 \end{figure}
 
-The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
+\noindent The asymptotic complexity, often denoted as Big O notation, for Multi-Head Attention (MHA) in the Transformer model is typically expressed as\[ O(N \cdot d^2 \cdot H)\], where:
 \begin{itemize}
     \item $N$ is the sequence length,
     \item $d$ is the dimensionality of the model's hidden representations,
     \item $H$ is the number of attention heads.
 \end{itemize}
-Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.\\
+\noindent Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.
 
-After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.\\
+\noindent After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.
 
-The expression for MLP is given as:\\
-
+\noindent The expression for MLP is given as:
 \begin{equation}
     \text{MLP}(x) = W_2 \cdot \sigma(W_1 \cdot x + b_1) + b_2 \label{eq:mlp}
 \end{equation}
-
 where:
 \begin{align*}
     x      & : \text{the input vector,}                              \\
@@ -137,19 +136,18 @@ where:
     W_2    & : \text{the weight matrix for the second linear layer,} \\
     b_2    & : \text{the bias vector for the second layer.}
 \end{align*}
-Usually, an expansion factor of 4 is commonly employed as it is observed to be effective based on empirical evidence.\\
-\\
-The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer. In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.\\
+Usually, an expansion factor of 4 is commonly employed as it is observed to be effective based on empirical evidence.
 
-The general form can be represented as:\\
+\noindent The Residual connection, also known as Skip connection, addresses the vanishing gradient issue by facilitating smoother gradient flow throughout the network during back-propagation. By incorporating a shortcut that maintains an identity mapping, residual connections empower the model to learn residual features, capturing the distinctions between the input and the output of the layer. In this procedure, the respective inputs are applied back into the result from obtained form MLP and MHA.
 
-For Multihead Output\\
+\noindent The general form can be represented as:
+
+\noindent For Multihead Output
 \begin{equation}
     (Y) = (X) + \text{MHA} (\text{Normalization} (X)) \label{eq:multihead_output}
 \end{equation}
 
-
-For MLP Output
+\noindent For MLP Output
 \begin{equation}
     (\text{OUTPUT}) = (Y) + \text{MLP} (\text{Normalization} (Y)) \label{eq:mlp_output}
 \end{equation}

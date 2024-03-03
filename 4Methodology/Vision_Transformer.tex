@@ -59,7 +59,7 @@ For an input sequence $z \in \mathbf{R}^{N \times D}$ (with $N$ elements, each h
     A            & = \text{softmax}\left(\frac{qk^T}{\sqrt{Dh}}\right), \quad A \in \mathbf{R}^{N \times N} \label{eq:attentionweights} \\
     \text{SA}(z) & = Av \label{eq:selfattention}
 \end{align}
-
+\\
 MSA extends SA by running $k$ self-attention operations (heads) in parallel and then concatenating their outputs. To ensure consistent computation and parameter complexity, the dimension $Dh$ (from Eq. 5) is usually set to $D/k$.
 \begin{align}
     \text{MSA}(z) & = [SA_1(z); SA_2(z); \ldots ; SA_k(z)], \quad U_{msa} \in \mathbf{R}^{k \cdot Dh \times D} \label{eq:multiheadselfattention}
