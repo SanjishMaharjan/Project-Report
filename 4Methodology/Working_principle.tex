@@ -13,8 +13,6 @@ The comprehensive and detailed explanation of the functioning of our model is pr
 
 \noindent The images undergo resizing and conversion into tensors, representing the initial phase of the process. Following this, the "PatchEmbedding" module is employed to reshape the tensors. This reshaping step plays a pivotal role, setting the stage for a linear transformation that ultimately yields embedding vectors. A linear transformation was utilized on flattened image patches of one-dimensional sequence, to map them to a desired dimension.
 
-\noindent Einops-Einstein Operation, is a Python library that was used which simplifies tensor operations. Inspired by Einstein summation conventions, it offers an expressive syntax for reshaping and reducing and manipulation of tensors.
-
 \noindent After completing the patching process, the original positions of the patches within an image becomes unknown. To address this, position embedding is employed. Since the attention mechanism in transformers is position-independent, position embedding is introduced to enable the model to comprehend the specific locations of each patch in the original image. A vector is assigned to each patch, representing its unique position within the image. The values within these position embedding vectors are derived from sine and cosine functions.
 
 \noindent The positional encoding can be obtained as:
@@ -160,7 +158,7 @@ Usually, an expansion factor of 4 is commonly employed as it is observed to be e
 \noindent where:
 \begin{align*}
     \text{X} & : \text{Input for MHA}                 \\
-    \text{Y} & : \text{Output from MHA Input for MLP} 
+    \text{Y} & : \text{Output from MHA Input for MLP}
 \end{align*}
 \begin{figure}[htbp]
     \centering
