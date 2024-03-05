@@ -89,17 +89,15 @@ Where:
 \end{align}
 
 \noindent The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
-\noindent The multihead attention will contain 'h' numbers of heads, each head representing as a single. All these multiple heads undergo computation in parallel.
 
 \noindent The general form of the scaled dot-product attention is given as:
 \noindent The general form of the scaled dot-product attention is given as:
 \begin{equation}
     \text{Attention}(h) = \text{softmax}\left(\frac{Q_h \cdot K_h ^T}{\sqrt{d_k}}\right) V_h
 \end{equation}
-T
-\noindent he softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
 
-\noindent Finally,
+\noindent The softmax is applied along the rows of the matrix to normalize them to probability vectors and $d_k$ helps in avoiding peaky affinities. When attention distributions are too peaky, it suggests the model is assigning a significantly higher weight to a small subset of elements in the input sequence while largely ignoring the rest.
+
 \noindent Finally,
 \begin{equation}
     \text{Multihead Attention} = \text{concat} (h_1, h_2, h_3,...,H)* W^o
@@ -121,7 +119,7 @@ T
     \item $d$ is the dimensionality of the model's hidden representations,
     \item $H$ is the number of attention heads.
 \end{itemize}
-\noindent Because of this when processing long sequences, the computational cost of Multihead Attention, can be substantial.
+\noindent Processing long sequences can substantially increase the computational cost of Multihead Attention.
 
 \noindent After the MultiHead Attention layer, an essential component is the Multi-Layer Perceptron (MLP). The MLP comprises two linear layers, incorporating the GeLU activation function and followed by a Dropout layer. Unlike in Multihead Attention, where components interact with each other, in MLP, the inputs are treated independently and don't communicate with each other directly.
 
@@ -171,6 +169,6 @@ Usually, an expansion factor of 4 is commonly employed as it is observed to be e
 %     \caption{{Workings in MLP}}
 % \end{figure}
 
-\noindent Lastly, Layer Normalization, provided by Keras through the LayerNormalization module, is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition.
+\noindent Lastly, Layer Normalization is used for the normalization. Its integration helps stabilize training and maintain proper feature scaling, contributing to improved performance in image recognition.
 
 \newpage
