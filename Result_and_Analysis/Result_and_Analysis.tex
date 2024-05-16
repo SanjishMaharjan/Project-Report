@@ -58,27 +58,31 @@ The performance of our model is associated with various metrics such as:
 \begin{enumerate}
     \item \textbf{Accuracy:}
           The accuracy metric measures how correctly the model predicts instances by calculating the ratio of correctly classified instances to the total samples.
-          \[ Accuracy = \frac{TP + TN}{TP + FP + TN + FN} \]
+          \begin{equation}
+              Accuracy = \frac{TP + TN}{TP + FP + TN + FN}
+          \end{equation}
 
     \item \textbf{Precision:}
           Precision assesses the model's ability to identify positive samples among the actual positives, calculated as the ratio of true positives to the sum of true positives and false positives.
-
-          \[ Precision = \frac{TP}{TP + FP} \]
+          \begin{equation}
+              Precision = \frac{TP}{TP + FP}
+          \end{equation}
 
     \item \textbf{Recall (Sensitivity or True Positive Rate):}
           Recall measures the model's ability to precisely identify positive samples from the actual positives, calculated as the ratio of true positives to the sum of true positives and false negatives.
-
-          \[ Recall = \frac{TP}{TP + FN} \]
-
+          \begin{equation}
+              Recall = \frac{TP}{TP + FN}
+          \end{equation}
 
     \item \textbf{F1 Score:}
-
           The F1 score, a balance between precision and recall, is advantageous in scenarios with unequal class distribution or equal emphasis on both types of errors. It ranges between 0 and 1, with peak performance at 1.
+          \begin{equation}
+              F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall}
+          \end{equation}
 
-          \[ F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall} \]
-
-          The table of performance metrices and their corresponding computed values are as follows:
+          The table of performance metrics and their corresponding computed values are as follows:
 \end{enumerate}
+
 
 \begin{table}[h]
     \centering

@@ -12,6 +12,7 @@
 \usepackage{tocloft}
 \usepackage{setspace}
 \usepackage{titletoc}
+\usepackage{changepage}
 
 % Set font size for titles in Table of Contents, List of Figures, and List of Tables
 \renewcommand{\contentsname}{\normalfont\fontsize{14}{16}\bfseries Table of Contents}
@@ -33,7 +34,7 @@
 \include{0ACover/1title}
 \include{0ACover/0cover}
 \newpage
-
+% Add Acknowledgement to TOC
 \addcontentsline{toc}{section}{DECLARATION} % Add Acknowledgement to TOC
 \include{0ACover/3declaration}
 \newpage
@@ -43,6 +44,9 @@
 \newpage
 \addcontentsline{toc}{section}{COPYRIGHT} % Add Acknowledgement to TOC
 \include{0ACover/2copyright}
+\newpage
+\addcontentsline{toc}{section}{DEPARTMENTAL ACCEPTANCE}% Add Acknowledgement to TOC
+\include{0ACover/NewDeclare}
 \newpage
 
 
